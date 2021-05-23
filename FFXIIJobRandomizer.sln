@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerUI", "SixJobFiesta\RandomizerUI.csproj", "{5F27083B-D9FC-43FD-90D5-4B15A539C80D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerUI", "RandomizerUI\RandomizerUI.csproj", "{5F27083B-D9FC-43FD-90D5-4B15A539C80D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerRoller", "SJFRoller\RandomizerRoller.csproj", "{08925C68-0E30-455F-991F-71EDD191A3DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerRoller", "RandomizerRoller\RandomizerRoller.csproj", "{08925C68-0E30-455F-991F-71EDD191A3DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerBot", "SJFBot\RandomizerBot.csproj", "{E120A44C-2318-4041-AA8D-4C644960239D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerBot", "RandomizerBot\RandomizerBot.csproj", "{E120A44C-2318-4041-AA8D-4C644960239D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
