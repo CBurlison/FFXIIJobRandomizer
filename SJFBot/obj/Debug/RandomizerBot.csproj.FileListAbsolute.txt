@@ -1,0 +1,12 @@
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SJFBot.exe.config
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SJFBot.exe
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SJFBot.pdb
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SixJobFiesta.exe
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SJFRoller.dll
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SixJobFiesta.pdb
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SixJobFiesta.exe.config
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\bin\Debug\SJFRoller.pdb
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\obj\Debug\RandomizerBot.csprojAssemblyReference.cache
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\obj\Debug\RandomizerBot.csproj.CopyComplete
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\obj\Debug\SJFBot.exe
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFBot\obj\Debug\SJFBot.pdb

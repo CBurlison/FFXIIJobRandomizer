@@ -1,0 +1,12 @@
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\obj\Debug\SixJobFiesta.csprojAssemblyReference.cache
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\obj\Debug\SixJobFiesta.RollerUI.resources
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\obj\Debug\SixJobFiesta.Properties.Resources.resources
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\obj\Debug\SixJobFiesta.csproj.GenerateResource.cache
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\bin\Debug\SixJobFiesta.exe.config
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\bin\Debug\SixJobFiesta.exe
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\bin\Debug\SixJobFiesta.pdb
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\obj\Debug\SixJobFiesta.exe
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\obj\Debug\SixJobFiesta.pdb
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\bin\Debug\SJFRoller.dll
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\bin\Debug\SJFRoller.pdb
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SixJobFiesta\obj\Debug\SixJobFiesta.csproj.CopyComplete

@@ -1,0 +1,5 @@
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SJFRoller\bin\Debug\SJFRoller.dll
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SJFRoller\bin\Debug\SJFRoller.pdb
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SJFRoller\obj\Debug\SJFRoller.csprojAssemblyReference.cache
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SJFRoller\obj\Debug\SJFRoller.dll
+D:\Users\Cory\Documents\Repos\SixJobFiesta\SJFRoller\obj\Debug\SJFRoller.pdb
