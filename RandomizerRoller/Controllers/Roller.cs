@@ -11,32 +11,38 @@ namespace RandomizerRoller.Controllers
         public bool Unique { get; set; }
         public bool Weapons { get; set; }
         public bool All { get; set; }
+        public bool Characters { get; set; }
         public bool Classic { get; set; }
         public bool MainOnly { get; set; }
         public List<Character> Assignments { get; set; }
 
-        private List<Job> _jobs = new List<Job>();
+        private Job[] _jobs;
+        private string[] _characterList = new[] { "Vaan", "Balthier", "Fran", "Basch", "Ashe", "Penelo" };
 
-        public Roller (bool unique, bool weapons, bool all, bool classic, bool mainOnly)
+        public Roller(bool unique, bool weapons,
+            bool all, bool classic, bool mainOnly, bool characters)
         {
             Unique = unique;
             Weapons = weapons;
             All = all;
             Classic = classic;
             MainOnly = mainOnly;
+            Characters = characters;
 
-            _jobs.Add(new Job("Knight", new[] { "Swords", "Greatswords" }));
-            _jobs.Add(new Job("Monk", new[] { "Unarmed", "Poles" }));
-            _jobs.Add(new Job("White Mage", new[] { "Rods" }));
-            _jobs.Add(new Job("Black Mage", new[] { "Staves" }));
-            _jobs.Add(new Job("Red Battlemage", new[] { "Maces" }));
-            _jobs.Add(new Job("Shikari", new[] { "Daggers", "Ninja Swords" }));
-            _jobs.Add(new Job("Uhlan", new[] { "Spears" }));
-            _jobs.Add(new Job("Bushi", new[] { "Katanas" }));
-            _jobs.Add(new Job("Foebreaker", new[] { "Axes & Hammers", "Hand-bombs" }));
-            _jobs.Add(new Job("Time Battlemage", new[] { "Crossbows" }));
-            _jobs.Add(new Job("Machinest", new[] { "Guns", "Measures" }));
-            _jobs.Add(new Job("Archer", new[] { "Bows" }));
+            _jobs = new[] { 
+                new Job("Knight", new[] { "Swords", "Greatswords" }),
+                new Job("Monk", new[] { "Unarmed", "Poles" }),
+                new Job("White Mage", new[] { "Rods" }),
+                new Job("Black Mage", new[] { "Staves" }),
+                new Job("Red Battlemage", new[] { "Maces" }),
+                new Job("Shikari", new[] { "Daggers", "Ninja Swords" }),
+                new Job("Uhlan", new[] { "Spears" }),
+                new Job("Bushi", new[] { "Katanas" }),
+                new Job("Foebreaker", new[] { "Axes & Hammers", "Hand-bombs" }),
+                new Job("Time Battlemage", new[] { "Crossbows" }),
+                new Job("Machinest", new[] { "Guns", "Measures" }),
+                new Job("Archer", new[] { "Bows" }) 
+            };
         }
 
         public void Roll()
@@ -44,6 +50,38 @@ namespace RandomizerRoller.Controllers
             Assignments = new List<Character>();
             DateTime now = DateTime.Now;
             Random rand = new Random(now.Year + now.Month + now.Day + now.Hour + now.Minute + now.Second + now.Millisecond);
+
+            RollJobs(rand);
+            RollWeapons(rand);
+            RollCharacters(rand);
+        }
+
+        private void RollCharacters(Random rand)
+        {
+            if (All)
+            {
+                for (int i = 0; i < Assignments.Count; i++)
+                {
+                    Assignments[i].Name = _characterList[i];
+                }
+            }
+            else if (Characters)
+            {
+                string newName = _characterList[rand.Next(_characterList.Length)];
+                Assignments[0].Name = newName;
+
+                for (int i = 1; i < Assignments.Count; i++)
+                {
+                    while (NameExists(newName))
+                        newName = _characterList[rand.Next(_characterList.Length)];
+
+                    Assignments[i].Name = newName;
+                }
+            }
+        }
+
+        private void RollJobs(Random rand)
+        {
             int max = Classic ? 6 : 12;
             int characters = All ? 5 : 2;
 
@@ -84,14 +122,6 @@ namespace RandomizerRoller.Controllers
                     Assignments[i].Sub = Job.None;
                 }
             }
-
-            if (Weapons)
-            {
-                foreach (Character ch in Assignments)
-                {
-                    ch.Weapon = RollWeapon(rand, ch.Main, ch.Sub);
-                }
-            }
         }
 
         private bool CheckExists(Job rolled)
@@ -106,16 +136,31 @@ namespace RandomizerRoller.Controllers
             return jobs.Contains(rolled);
         }
 
-        private string RollWeapon(Random rand, Job main, Job sub)
+        private void RollWeapons(Random rand)
         {
-            var weapons = new List<string>(main.Weapons);
-
-            if (!MainOnly && !Classic)
+            if (Weapons)
             {
-                weapons.AddRange(sub.Weapons);
-            }
+                foreach (Character ch in Assignments)
+                {
+                    var weapons = new List<string>(ch.Main.Weapons);
 
-            return weapons[rand.Next(weapons.Count)];
+                    if (!MainOnly && !Classic)
+                    {
+                        weapons.AddRange(ch.Sub.Weapons);
+                    }
+
+                    ch.Weapon = weapons[rand.Next(weapons.Count)];
+                }
+            }
+        }
+
+        private bool NameExists(string toCheck)
+        {
+            foreach (var c in Assignments)
+                if (c.Name == toCheck)
+                    return true;
+
+            return false;
         }
     }
 }

@@ -17,15 +17,16 @@ namespace SixJobFiesta
             ClearAll();
             toolTip.SetToolTip(chkUnique, "Rolls jobs without any duplicates.");
             toolTip.SetToolTip(chkWeapon, "Rolls required weapon based on jobs assigned. You must use this type of weapon once they become available, regardless of acquisition method. The use of a wiki is suggested.");
-            toolTip.SetToolTip(chkAll, "Rolls 6 job combos. Allows the use of all 6 characters. Must be used in order of character acquisition.");
+            toolTip.SetToolTip(chkAll, "Rolls 6 job combos. Allows the use of all 6 characters and all jobs will be assigned.");
             toolTip.SetToolTip(chkClassic, "Rolls Main jobs that existed in Final Fantasy 1. No Sub jobs can be used.");
             toolTip.SetToolTip(chkMainOnly, "Rolls only Main jobs.");
+            toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
         }
 
         void btnRoll_Click(object sender, EventArgs e)
         {
             ClearAll();
-            Roller roller = new Roller(chkUnique.Checked, chkWeapon.Checked, chkAll.Checked, chkClassic.Checked, chkMainOnly.Checked);
+            Roller roller = new Roller(chkUnique.Checked, chkWeapon.Checked, chkAll.Checked, chkClassic.Checked, chkMainOnly.Checked, chkCharacters.Checked);
             roller.Roll();
 
             var labels = GetControlsOfType<Label>();
@@ -38,6 +39,8 @@ namespace SixJobFiesta
                 sub.Text = roller.Assignments[i].Sub.Name;
                 Label weapon = labels.First(a => a.Tag != null && a.Tag.ToString() == $"Weapon{i + 1}");
                 weapon.Text = roller.Assignments[i].Weapon;
+                Label character = labels.First(a => a.Tag != null && a.Tag.ToString() == $"Char{i + 1}");
+                character.Text = roller.Assignments[i].Name;
             }
         }
 
@@ -45,7 +48,8 @@ namespace SixJobFiesta
         {
             var labels = GetControlsOfType<Label>();
             var toClear = labels.Where(a => a.Tag != null && 
-            (a.Tag.ToString().StartsWith("Main") || a.Tag.ToString().StartsWith("Sub") || a.Tag.ToString().StartsWith("Weapon")));
+            (a.Tag.ToString().StartsWith("Main") || a.Tag.ToString().StartsWith("Sub") 
+            || a.Tag.ToString().StartsWith("Weapon") || a.Tag.ToString().StartsWith("Char")));
 
             foreach (Label lbl in toClear)
                 lbl.Text = string.Empty;

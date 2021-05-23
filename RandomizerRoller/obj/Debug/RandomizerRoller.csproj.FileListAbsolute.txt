@@ -2,3 +2,8 @@ D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFRoller\bin\Debug\SJFRoller.d
 D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFRoller\bin\Debug\SJFRoller.pdb
 D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFRoller\obj\Debug\SJFRoller.dll
 D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\SJFRoller\obj\Debug\SJFRoller.pdb
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\RandomizerRoller\bin\Debug\SJFRoller.dll
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\RandomizerRoller\bin\Debug\SJFRoller.pdb
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\RandomizerRoller\obj\Debug\RandomizerRoller.csprojAssemblyReference.cache
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\RandomizerRoller\obj\Debug\SJFRoller.dll
+D:\Users\Cory\Documents\Repos\FFXIIJobRandomizer\RandomizerRoller\obj\Debug\SJFRoller.pdb
