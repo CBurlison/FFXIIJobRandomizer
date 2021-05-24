@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -63,5 +64,92 @@ namespace SixJobFiesta
                    where component != null && component is T
                    select (T)Convert.ChangeType(component, typeof(T));
         }
+
+        #region >>> Menu Strip Events
+        private void unarmedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Unequipped");
+        }
+
+        private void swordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Swords");
+        }
+
+        private void daggersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Daggers");
+        }
+
+        private void axesAndHammersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Axes_and_hammers");
+        }
+
+        private void macesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Maces");
+        }
+
+        private void measuresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Measures");
+        }
+
+        private void greatswordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Greatswords");
+        }
+
+        private void katanaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Katana");
+        }
+
+        private void ninjaSwordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Ninja_swords");
+        }
+
+        private void spearsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Spears");
+        }
+
+        private void polesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Poles");
+        }
+
+        private void rodsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Rods");
+        }
+
+        private void stavesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Staves");
+        }
+
+        private void bowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Bows");
+        }
+
+        private void crossbowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Crossbows");
+        }
+
+        private void gunsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Guns");
+        }
+
+        private void handbombsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Hand-bombs");
+        }
+        #endregion >>> Menu Strip Events
     }
 }

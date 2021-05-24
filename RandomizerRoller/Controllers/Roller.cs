@@ -17,7 +17,7 @@ namespace RandomizerRoller.Controllers
         public List<Character> Assignments { get; set; }
 
         private Job[] _jobs;
-        private string[] _characterList = new[] { "Vaan", "Balthier", "Fran", "Basch", "Ashe", "Penelo" };
+        private string[] _characterList;
 
         public Roller(bool unique, bool weapons,
             bool all, bool classic, bool mainOnly, bool characters)
@@ -29,6 +29,7 @@ namespace RandomizerRoller.Controllers
             MainOnly = mainOnly;
             Characters = characters;
 
+            _characterList = new[] { "Vaan", "Balthier", "Fran", "Basch", "Ashe", "Penelo" };
             _jobs = new[] { 
                 new Job("Knight", new[] { "Swords", "Greatswords" }),
                 new Job("Monk", new[] { "Unarmed", "Poles" }),
@@ -37,7 +38,7 @@ namespace RandomizerRoller.Controllers
                 new Job("Red Battlemage", new[] { "Maces" }),
                 new Job("Shikari", new[] { "Daggers", "Ninja Swords" }),
                 new Job("Uhlan", new[] { "Spears" }),
-                new Job("Bushi", new[] { "Katanas" }),
+                new Job("Bushi", new[] { "Katana" }),
                 new Job("Foebreaker", new[] { "Axes & Hammers", "Hand-bombs" }),
                 new Job("Time Battlemage", new[] { "Crossbows" }),
                 new Job("Machinest", new[] { "Guns", "Measures" }),
