@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5F27083B-D9FC-43FD-90D5-4B15A539C80D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SixJobFiesta</RootNamespace>
-    <AssemblyName>SixJobFiesta</AssemblyName>
+    <RootNamespace>RandomizerUI</RootNamespace>
+    <AssemblyName>RandomizerUI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

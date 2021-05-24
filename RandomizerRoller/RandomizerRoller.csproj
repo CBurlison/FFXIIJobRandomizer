@@ -7,8 +7,8 @@
     <ProjectGuid>{08925C68-0E30-455F-991F-71EDD191A3DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SJFRoller</RootNamespace>
-    <AssemblyName>SJFRoller</AssemblyName>
+    <RootNamespace>RandomizerRoller</RootNamespace>
+    <AssemblyName>RandomizerRoller</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
