@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RollerUI.cs">
       <SubType>RollerUI</SubType>
     </Compile>
@@ -62,14 +67,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +91,54 @@
       <Project>{08925c68-0e30-455f-991f-71edd191a3db}</Project>
       <Name>RandomizerRoller</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXII\Archer.png" />
+    <EmbeddedResource Include="FFXII\Axes &amp; Hammers.png" />
+    <EmbeddedResource Include="FFXII\Black Mage.png" />
+    <EmbeddedResource Include="FFXII\Bows.png" />
+    <EmbeddedResource Include="FFXII\Bushi.png" />
+    <EmbeddedResource Include="FFXII\Crossbows.png" />
+    <EmbeddedResource Include="FFXII\Daggers.png" />
+    <EmbeddedResource Include="FFXII\Foebreaker.png" />
+    <EmbeddedResource Include="FFXII\Greatswords.png" />
+    <EmbeddedResource Include="FFXII\Guns.png" />
+    <EmbeddedResource Include="FFXII\Hand-bombs.png" />
+    <EmbeddedResource Include="FFXII\Katana.png" />
+    <EmbeddedResource Include="FFXII\Knight.png" />
+    <EmbeddedResource Include="FFXII\Maces.png" />
+    <EmbeddedResource Include="FFXII\Machinist.png" />
+    <EmbeddedResource Include="FFXII\Measures.png" />
+    <EmbeddedResource Include="FFXII\Monk.png" />
+    <EmbeddedResource Include="FFXII\Ninja Swords.png" />
+    <EmbeddedResource Include="FFXII\Poles.png" />
+    <EmbeddedResource Include="FFXII\Red Battlemage.png" />
+    <EmbeddedResource Include="FFXII\Rods.png" />
+    <EmbeddedResource Include="FFXII\Shikari.png" />
+    <EmbeddedResource Include="FFXII\Spears.png" />
+    <EmbeddedResource Include="FFXII\Staves.png" />
+    <EmbeddedResource Include="FFXII\Swords.png" />
+    <EmbeddedResource Include="FFXII\Time Battlemage.png" />
+    <EmbeddedResource Include="FFXII\Uhlan.png" />
+    <EmbeddedResource Include="FFXII\White Mage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXII\Ashe.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXII\Balthier.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXII\Basch.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXII\Fran.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXII\Penelo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXII\Vaan.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,7 +10,6 @@ namespace RandomizerRoller.Controllers
     {
         public bool Unique { get; set; }
         public bool Weapons { get; set; }
-        public bool All { get; set; }
         public bool Characters { get; set; }
         public bool Classic { get; set; }
         public bool MainOnly { get; set; }
@@ -20,11 +19,10 @@ namespace RandomizerRoller.Controllers
         private string[] _characterList;
 
         public Roller(bool unique, bool weapons,
-            bool all, bool classic, bool mainOnly, bool characters)
+            bool classic, bool mainOnly, bool characters)
         {
             Unique = unique;
             Weapons = weapons;
-            All = all;
             Classic = classic;
             MainOnly = mainOnly;
             Characters = characters;
@@ -39,9 +37,9 @@ namespace RandomizerRoller.Controllers
                 new Job("Shikari", new[] { "Daggers", "Ninja Swords" }),
                 new Job("Uhlan", new[] { "Spears" }),
                 new Job("Bushi", new[] { "Katana" }),
-                new Job("Foebreaker", new[] { "Axes & Hammers", "Hand-bombs" }),
+                new Job("Foebreaker", new[] { "Axes && Hammers", "Hand-bombs" }),
                 new Job("Time Battlemage", new[] { "Crossbows" }),
-                new Job("Machinest", new[] { "Guns", "Measures" }),
+                new Job("Machinist", new[] { "Guns", "Measures" }),
                 new Job("Archer", new[] { "Bows" }) 
             };
         }
@@ -59,14 +57,7 @@ namespace RandomizerRoller.Controllers
 
         private void RollCharacters(Random rand)
         {
-            if (All)
-            {
-                for (int i = 0; i < Assignments.Count; i++)
-                {
-                    Assignments[i].Name = _characterList[i];
-                }
-            }
-            else if (Characters)
+            if (Characters)
             {
                 string newName = _characterList[rand.Next(_characterList.Length)];
                 Assignments[0].Name = newName;
@@ -84,9 +75,8 @@ namespace RandomizerRoller.Controllers
         private void RollJobs(Random rand)
         {
             int max = Classic ? 6 : 12;
-            int characters = All ? 5 : 2;
 
-            for (var i = 0; i <= characters; i++)
+            for (var i = 0; i <= 2; i++)
             {
                 Job main = null;
 

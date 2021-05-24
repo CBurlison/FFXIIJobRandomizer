@@ -117,4 +117,107 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Archer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\archer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ashe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\FFXII\Ashe.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Axes &amp;&amp; Hammers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\axes &amp; hammers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Balthier" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\FFXII\Balthier.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Basch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\FFXII\Basch.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Black Mage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\black mage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bows" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\bows.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bushi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\bushi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Crossbows" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\crossbows.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Daggers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\daggers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Foebreaker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\foebreaker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fran" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\FFXII\Fran.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Greatswords" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\greatswords.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Guns" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\guns.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hand-bombs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\hand-bombs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Katana" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\katana.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Knight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\knight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Maces" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\maces.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Machinist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\machinist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Measures" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\measures.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Monk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\monk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ninja Swords" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\ninja swords.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Penelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\FFXII\Penelo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Poles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\poles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red Battlemage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\red battlemage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rods" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\rods.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Shikari" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\shikari.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Spears" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\spears.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Staves" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\staves.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Swords" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\swords.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Time Battlemage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\time battlemage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Uhlan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\uhlan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vaan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\FFXII\Vaan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="White Mage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ffxii\white mage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

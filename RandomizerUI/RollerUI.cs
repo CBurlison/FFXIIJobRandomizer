@@ -1,9 +1,11 @@
 ﻿using RandomizerRoller.Controllers;
+using RandomizerUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -18,7 +20,6 @@ namespace SixJobFiesta
             ClearAll();
             toolTip.SetToolTip(chkUnique, "Rolls jobs without any duplicates.");
             toolTip.SetToolTip(chkWeapon, "Rolls required weapon based on jobs assigned. You must use this type of weapon once they become available, regardless of acquisition method. The use of a wiki is suggested.");
-            toolTip.SetToolTip(chkAll, "Rolls 6 job combos. Allows the use of all 6 characters and all jobs will be assigned.");
             toolTip.SetToolTip(chkClassic, "Rolls Main jobs that existed in Final Fantasy 1. No Sub jobs can be used.");
             toolTip.SetToolTip(chkMainOnly, "Rolls only Main jobs.");
             toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
@@ -27,10 +28,11 @@ namespace SixJobFiesta
         void btnRoll_Click(object sender, EventArgs e)
         {
             ClearAll();
-            Roller roller = new Roller(chkUnique.Checked, chkWeapon.Checked, chkAll.Checked, chkClassic.Checked, chkMainOnly.Checked, chkCharacters.Checked);
+            Roller roller = new Roller(chkUnique.Checked, chkWeapon.Checked, chkClassic.Checked, chkMainOnly.Checked, chkCharacters.Checked);
             roller.Roll();
 
             var labels = GetControlsOfType<Label>();
+            var pictures = GetControlsOfType<PictureBox>();
 
             for (int i = 0; i < roller.Assignments.Count; i++)
             {
@@ -42,6 +44,22 @@ namespace SixJobFiesta
                 weapon.Text = roller.Assignments[i].Weapon;
                 Label character = labels.First(a => a.Tag != null && a.Tag.ToString() == $"Char{i + 1}");
                 character.Text = roller.Assignments[i].Name;
+
+                PictureBox imgCharacter = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Char{i + 1}");
+                if (roller.Assignments[i].Name != "Any")
+                    imgCharacter.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Name);
+
+                PictureBox imgMain = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Main{i + 1}");
+                if (roller.Assignments[i].Main.Name != "None")
+                    imgMain.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Main.Name);
+
+                PictureBox imgSub = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Sub{i + 1}");
+                if (roller.Assignments[i].Sub.Name != "None")
+                    imgSub.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Sub.Name);
+
+                PictureBox imgWeapon = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Weapon{i + 1}");
+                if (roller.Assignments[i].Weapon != "Any")
+                    imgWeapon.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Weapon);
             }
         }
 
@@ -54,6 +72,14 @@ namespace SixJobFiesta
 
             foreach (Label lbl in toClear)
                 lbl.Text = string.Empty;
+
+            var images = GetControlsOfType<PictureBox>();
+            var imagesToClear = images.Where(a => a.Tag != null &&
+            (a.Tag.ToString().StartsWith("Main") || a.Tag.ToString().StartsWith("Sub")
+            || a.Tag.ToString().StartsWith("Weapon") || a.Tag.ToString().StartsWith("Char")));
+
+            foreach (PictureBox img in imagesToClear)
+                img.BackgroundImage = null;
         }
 
         private IEnumerable<T> GetControlsOfType<T>()
@@ -66,89 +92,14 @@ namespace SixJobFiesta
         }
 
         #region >>> Menu Strip Events
-        private void unarmedToolStripMenuItem_Click(object sender, EventArgs e)
+        private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Unequipped");
+            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons");
         }
 
-        private void swordsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void jobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Swords");
-        }
-
-        private void daggersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Daggers");
-        }
-
-        private void axesAndHammersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Axes_and_hammers");
-        }
-
-        private void macesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Maces");
-        }
-
-        private void measuresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Measures");
-        }
-
-        private void greatswordsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Greatswords");
-        }
-
-        private void katanaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Katana");
-        }
-
-        private void ninjaSwordsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Ninja_swords");
-        }
-
-        private void spearsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Spears");
-        }
-
-        private void polesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Poles");
-        }
-
-        private void rodsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Rods");
-        }
-
-        private void stavesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Staves");
-        }
-
-        private void bowsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Bows");
-        }
-
-        private void crossbowsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Crossbows");
-        }
-
-        private void gunsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Guns");
-        }
-
-        private void handbombsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons#Hand-bombs");
+            Process.Start("https://finalfantasy.fandom.com/wiki/License_Board#List_of_jobs");
         }
         #endregion >>> Menu Strip Events
     }
