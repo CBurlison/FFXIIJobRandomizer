@@ -1,4 +1,4 @@
-﻿namespace SixJobFiesta
+﻿namespace RandomizerUI
 {
     partial class RollerUI
     {

@@ -14,11 +14,12 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
-namespace SixJobFiesta
+namespace RandomizerUI
 {
     public partial class RollerUI : Form
     {
         private Roll _current = null;
+        private string _defaultSave;
 
         public RollerUI()
         {
@@ -30,6 +31,13 @@ namespace SixJobFiesta
             toolTip.SetToolTip(chkMainOnly, "Rolls only Main jobs.");
             toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
             _current = new Roll();
+
+            _defaultSave = Settings.Default.SaveLocation;
+
+            if (!Directory.Exists(_defaultSave))
+            {
+                Directory.CreateDirectory(_defaultSave);
+            }
         }
 
         void btnRoll_Click(object sender, EventArgs e)
@@ -135,13 +143,14 @@ namespace SixJobFiesta
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Title = "Load roll.";
-                openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "save files (*.save)|*.save";
                 openFileDialog.FilterIndex = 1;
+                openFileDialog.InitialDirectory = _defaultSave;
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    SetSaveLocation(openFileDialog.FileName);
                     var fileStream = openFileDialog.OpenFile();
 
                     IFormatter formatter = new BinaryFormatter();
@@ -149,6 +158,13 @@ namespace SixJobFiesta
                     PopulateUI();
                 }
             }
+        }
+
+        private static void SetSaveLocation(string file)
+        {
+            var split = file.Split('/').ToList();
+            split.RemoveAt(split.Count - 1);
+            Settings.Default.SaveLocation = string.Join("//", split);
         }
 
         private void SaveAs()
@@ -159,10 +175,12 @@ namespace SixJobFiesta
                 saveFileDialog1.Title = "Save current roll.";
                 saveFileDialog1.Filter = "save files (*.save)|*.save";
                 saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.InitialDirectory = _defaultSave;
                 saveFileDialog1.RestoreDirectory = true;
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
+                    SetSaveLocation(saveFileDialog1.FileName);
                     _current.SaveLoc = saveFileDialog1.FileName;
 
                     if ((myStream = saveFileDialog1.OpenFile()) != null)
