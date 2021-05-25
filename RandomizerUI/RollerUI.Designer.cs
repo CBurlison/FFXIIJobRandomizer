@@ -658,7 +658,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RollerUI";
-            this.Text = "Six Job Fiesta";
+            this.Text = "FFXII Job Randomizer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.box1.ResumeLayout(false);
