@@ -44,6 +44,7 @@
     <Compile Include="Controllers\Roller.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Roll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

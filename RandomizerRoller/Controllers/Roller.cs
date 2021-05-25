@@ -8,24 +8,15 @@ namespace RandomizerRoller.Controllers
 {
     public class Roller
     {
-        public bool Unique { get; set; }
-        public bool Weapons { get; set; }
-        public bool Characters { get; set; }
-        public bool Classic { get; set; }
-        public bool MainOnly { get; set; }
-        public List<Character> Assignments { get; set; }
+        public Roll Assignments { get; set; }
 
         private Job[] _jobs;
         private string[] _characterList;
 
         public Roller(bool unique, bool weapons,
-            bool classic, bool mainOnly, bool characters)
+            bool classic, bool mainOnly, bool randomCharacters)
         {
-            Unique = unique;
-            Weapons = weapons;
-            Classic = classic;
-            MainOnly = mainOnly;
-            Characters = characters;
+            Assignments = new Roll(unique, weapons, classic, mainOnly, randomCharacters);
 
             _characterList = new[] { "Vaan", "Balthier", "Fran", "Basch", "Ashe", "Penelo" };
             _jobs = new[] { 
@@ -46,7 +37,7 @@ namespace RandomizerRoller.Controllers
 
         public void Roll()
         {
-            Assignments = new List<Character>();
+            Assignments.Characters = new List<Character>();
             DateTime now = DateTime.Now;
             Random rand = new Random(now.Year + now.Month + now.Day + now.Hour + now.Minute + now.Second + now.Millisecond);
 
@@ -57,24 +48,24 @@ namespace RandomizerRoller.Controllers
 
         private void RollCharacters(Random rand)
         {
-            if (Characters)
+            if (Assignments.RandomCharacters)
             {
                 string newName = _characterList[rand.Next(_characterList.Length)];
-                Assignments[0].Name = newName;
+                Assignments.Characters[0].Name = newName;
 
-                for (int i = 1; i < Assignments.Count; i++)
+                for (int i = 1; i < Assignments.Characters.Count; i++)
                 {
                     while (NameExists(newName))
                         newName = _characterList[rand.Next(_characterList.Length)];
 
-                    Assignments[i].Name = newName;
+                    Assignments.Characters[i].Name = newName;
                 }
             }
         }
 
         private void RollJobs(Random rand)
         {
-            int max = Classic ? 6 : 12;
+            int max = Assignments.Classic ? 6 : 12;
 
             for (var i = 0; i <= 2; i++)
             {
@@ -84,16 +75,16 @@ namespace RandomizerRoller.Controllers
                 {
                     Job rolled = _jobs[rand.Next(max)];
 
-                    if ((Unique && !CheckExists(rolled)) || !Unique)
+                    if ((Assignments.Unique && !CheckExists(rolled)) || !Assignments.Unique)
                     {
                         Character ch = new Character();
                         ch.Main = rolled;
-                        Assignments.Add(ch);
+                        Assignments.Characters.Add(ch);
                         main = rolled;
                     }
                 }
 
-                if (!MainOnly && !Classic)
+                if (!Assignments.MainOnly && !Assignments.Classic)
                 {
                     Job sub = null;
 
@@ -101,27 +92,27 @@ namespace RandomizerRoller.Controllers
                     {
                         Job rolled = _jobs[rand.Next(max)];
 
-                        if (Assignments[i].Main != rolled && ((Unique && !CheckExists(rolled)) || !Unique))
+                        if (Assignments.Characters[i].Main != rolled && ((Assignments.Unique && !CheckExists(rolled)) || !Assignments.Unique))
                         {
-                            Assignments[i].Sub = rolled;
+                            Assignments.Characters[i].Sub = rolled;
                             sub = rolled;
                         }
                     }
                 }
                 else
                 {
-                    Assignments[i].Sub = Job.None;
+                    Assignments.Characters[i].Sub = Job.None;
                 }
             }
         }
 
         private bool CheckExists(Job rolled)
         {
-            var jobs = new List<Job>(Assignments.Select(a => a.Main));
+            var jobs = new List<Job>(Assignments.Characters.Select(a => a.Main));
 
-            if (!MainOnly && !Classic)
+            if (!Assignments.MainOnly && !Assignments.Classic)
             {
-                jobs.AddRange(Assignments.Select(a => a.Sub));
+                jobs.AddRange(Assignments.Characters.Select(a => a.Sub));
             }
 
             return jobs.Contains(rolled);
@@ -129,13 +120,13 @@ namespace RandomizerRoller.Controllers
 
         private void RollWeapons(Random rand)
         {
-            if (Weapons)
+            if (Assignments.Weapons)
             {
-                foreach (Character ch in Assignments)
+                foreach (Character ch in Assignments.Characters)
                 {
                     var weapons = new List<string>(ch.Main.Weapons);
 
-                    if (!MainOnly && !Classic)
+                    if (!Assignments.MainOnly && !Assignments.Classic)
                     {
                         weapons.AddRange(ch.Sub.Weapons);
                     }
@@ -147,7 +138,7 @@ namespace RandomizerRoller.Controllers
 
         private bool NameExists(string toCheck)
         {
-            foreach (var c in Assignments)
+            foreach (var c in Assignments.Characters)
                 if (c.Name == toCheck)
                     return true;
 

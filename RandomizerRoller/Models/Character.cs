@@ -4,6 +4,7 @@ using System.Text;
 
 namespace RandomizerRoller.Models
 {
+    [Serializable]
     public class Character
     {
         public Job Main { get; set; } = null;

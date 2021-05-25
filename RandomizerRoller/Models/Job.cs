@@ -5,6 +5,7 @@ using System.Text;
 
 namespace RandomizerRoller.Models
 {
+    [Serializable]
     public class Job : IEquatable<Job>, IEqualityComparer<Job>
     {
         public static Job None { get; set; } = new Job("None", new string[0]);

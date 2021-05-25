@@ -45,11 +45,22 @@
             this.lblChar1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weaponHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.box1 = new System.Windows.Forms.GroupBox();
+            this.picWeapon1 = new System.Windows.Forms.PictureBox();
+            this.picSub1 = new System.Windows.Forms.PictureBox();
+            this.picMain1 = new System.Windows.Forms.PictureBox();
+            this.picChar1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.picWeapon2 = new System.Windows.Forms.PictureBox();
+            this.picSub2 = new System.Windows.Forms.PictureBox();
+            this.picMain2 = new System.Windows.Forms.PictureBox();
+            this.picChar2 = new System.Windows.Forms.PictureBox();
             this.lblChar2 = new System.Windows.Forms.Label();
             this.lblMain2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -59,6 +70,10 @@
             this.lblWeapon2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.picWeapon3 = new System.Windows.Forms.PictureBox();
+            this.picSub3 = new System.Windows.Forms.PictureBox();
+            this.picMain3 = new System.Windows.Forms.PictureBox();
+            this.picChar3 = new System.Windows.Forms.PictureBox();
             this.lblChar3 = new System.Windows.Forms.Label();
             this.lblMain3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -67,34 +82,22 @@
             this.lblSub3 = new System.Windows.Forms.Label();
             this.lblWeapon3 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.picWeapon3 = new System.Windows.Forms.PictureBox();
-            this.picSub3 = new System.Windows.Forms.PictureBox();
-            this.picMain3 = new System.Windows.Forms.PictureBox();
-            this.picChar3 = new System.Windows.Forms.PictureBox();
-            this.picWeapon2 = new System.Windows.Forms.PictureBox();
-            this.picSub2 = new System.Windows.Forms.PictureBox();
-            this.picMain2 = new System.Windows.Forms.PictureBox();
-            this.picChar2 = new System.Windows.Forms.PictureBox();
-            this.picWeapon1 = new System.Windows.Forms.PictureBox();
-            this.picSub1 = new System.Windows.Forms.PictureBox();
-            this.picMain1 = new System.Windows.Forms.PictureBox();
-            this.picChar1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.box1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picWeapon1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSub1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChar1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picWeapon2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSub2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChar2)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSub3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWeapon2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSub2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picChar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWeapon1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSub1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picChar1)).BeginInit();
             this.SuspendLayout();
             // 
             // chkUnique
@@ -240,12 +243,36 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
             this.weaponHelpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(931, 24);
             this.menuStrip1.TabIndex = 35;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // weaponHelpToolStripMenuItem
             // 
@@ -290,6 +317,46 @@
             this.box1.TabIndex = 36;
             this.box1.TabStop = false;
             // 
+            // picWeapon1
+            // 
+            this.picWeapon1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picWeapon1.Location = new System.Drawing.Point(19, 190);
+            this.picWeapon1.Name = "picWeapon1";
+            this.picWeapon1.Size = new System.Drawing.Size(100, 100);
+            this.picWeapon1.TabIndex = 33;
+            this.picWeapon1.TabStop = false;
+            this.picWeapon1.Tag = "Weapon1";
+            // 
+            // picSub1
+            // 
+            this.picSub1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picSub1.Location = new System.Drawing.Point(136, 190);
+            this.picSub1.Name = "picSub1";
+            this.picSub1.Size = new System.Drawing.Size(100, 100);
+            this.picSub1.TabIndex = 32;
+            this.picSub1.TabStop = false;
+            this.picSub1.Tag = "Sub1";
+            // 
+            // picMain1
+            // 
+            this.picMain1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picMain1.Location = new System.Drawing.Point(136, 43);
+            this.picMain1.Name = "picMain1";
+            this.picMain1.Size = new System.Drawing.Size(100, 100);
+            this.picMain1.TabIndex = 31;
+            this.picMain1.TabStop = false;
+            this.picMain1.Tag = "Main1";
+            // 
+            // picChar1
+            // 
+            this.picChar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picChar1.Location = new System.Drawing.Point(19, 43);
+            this.picChar1.Name = "picChar1";
+            this.picChar1.Size = new System.Drawing.Size(100, 100);
+            this.picChar1.TabIndex = 30;
+            this.picChar1.TabStop = false;
+            this.picChar1.Tag = "Char1";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.picWeapon2);
@@ -309,6 +376,46 @@
             this.groupBox1.Size = new System.Drawing.Size(254, 304);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
+            // 
+            // picWeapon2
+            // 
+            this.picWeapon2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picWeapon2.Location = new System.Drawing.Point(19, 190);
+            this.picWeapon2.Name = "picWeapon2";
+            this.picWeapon2.Size = new System.Drawing.Size(100, 100);
+            this.picWeapon2.TabIndex = 33;
+            this.picWeapon2.TabStop = false;
+            this.picWeapon2.Tag = "Weapon2";
+            // 
+            // picSub2
+            // 
+            this.picSub2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picSub2.Location = new System.Drawing.Point(136, 190);
+            this.picSub2.Name = "picSub2";
+            this.picSub2.Size = new System.Drawing.Size(100, 100);
+            this.picSub2.TabIndex = 32;
+            this.picSub2.TabStop = false;
+            this.picSub2.Tag = "Sub2";
+            // 
+            // picMain2
+            // 
+            this.picMain2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picMain2.Location = new System.Drawing.Point(136, 43);
+            this.picMain2.Name = "picMain2";
+            this.picMain2.Size = new System.Drawing.Size(100, 100);
+            this.picMain2.TabIndex = 31;
+            this.picMain2.TabStop = false;
+            this.picMain2.Tag = "Main2";
+            // 
+            // picChar2
+            // 
+            this.picChar2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picChar2.Location = new System.Drawing.Point(19, 43);
+            this.picChar2.Name = "picChar2";
+            this.picChar2.Size = new System.Drawing.Size(100, 100);
+            this.picChar2.TabIndex = 30;
+            this.picChar2.TabStop = false;
+            this.picChar2.Tag = "Char2";
             // 
             // lblChar2
             // 
@@ -410,6 +517,46 @@
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             // 
+            // picWeapon3
+            // 
+            this.picWeapon3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picWeapon3.Location = new System.Drawing.Point(19, 190);
+            this.picWeapon3.Name = "picWeapon3";
+            this.picWeapon3.Size = new System.Drawing.Size(100, 100);
+            this.picWeapon3.TabIndex = 33;
+            this.picWeapon3.TabStop = false;
+            this.picWeapon3.Tag = "Weapon3";
+            // 
+            // picSub3
+            // 
+            this.picSub3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picSub3.Location = new System.Drawing.Point(136, 190);
+            this.picSub3.Name = "picSub3";
+            this.picSub3.Size = new System.Drawing.Size(100, 100);
+            this.picSub3.TabIndex = 32;
+            this.picSub3.TabStop = false;
+            this.picSub3.Tag = "Sub3";
+            // 
+            // picMain3
+            // 
+            this.picMain3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picMain3.Location = new System.Drawing.Point(136, 43);
+            this.picMain3.Name = "picMain3";
+            this.picMain3.Size = new System.Drawing.Size(100, 100);
+            this.picMain3.TabIndex = 31;
+            this.picMain3.TabStop = false;
+            this.picMain3.Tag = "Main3";
+            // 
+            // picChar3
+            // 
+            this.picChar3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picChar3.Location = new System.Drawing.Point(19, 43);
+            this.picChar3.Name = "picChar3";
+            this.picChar3.Size = new System.Drawing.Size(100, 100);
+            this.picChar3.TabIndex = 30;
+            this.picChar3.TabStop = false;
+            this.picChar3.Tag = "Char3";
+            // 
             // lblChar3
             // 
             this.lblChar3.Location = new System.Drawing.Point(19, 27);
@@ -490,126 +637,6 @@
             this.label20.TabIndex = 7;
             this.label20.Text = "Weapon";
             // 
-            // picWeapon3
-            // 
-            this.picWeapon3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picWeapon3.Location = new System.Drawing.Point(19, 190);
-            this.picWeapon3.Name = "picWeapon3";
-            this.picWeapon3.Size = new System.Drawing.Size(100, 100);
-            this.picWeapon3.TabIndex = 33;
-            this.picWeapon3.TabStop = false;
-            this.picWeapon3.Tag = "Weapon3";
-            // 
-            // picSub3
-            // 
-            this.picSub3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picSub3.Location = new System.Drawing.Point(136, 190);
-            this.picSub3.Name = "picSub3";
-            this.picSub3.Size = new System.Drawing.Size(100, 100);
-            this.picSub3.TabIndex = 32;
-            this.picSub3.TabStop = false;
-            this.picSub3.Tag = "Sub3";
-            // 
-            // picMain3
-            // 
-            this.picMain3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picMain3.Location = new System.Drawing.Point(136, 43);
-            this.picMain3.Name = "picMain3";
-            this.picMain3.Size = new System.Drawing.Size(100, 100);
-            this.picMain3.TabIndex = 31;
-            this.picMain3.TabStop = false;
-            this.picMain3.Tag = "Main3";
-            // 
-            // picChar3
-            // 
-            this.picChar3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picChar3.Location = new System.Drawing.Point(19, 43);
-            this.picChar3.Name = "picChar3";
-            this.picChar3.Size = new System.Drawing.Size(100, 100);
-            this.picChar3.TabIndex = 30;
-            this.picChar3.TabStop = false;
-            this.picChar3.Tag = "Char3";
-            // 
-            // picWeapon2
-            // 
-            this.picWeapon2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picWeapon2.Location = new System.Drawing.Point(19, 190);
-            this.picWeapon2.Name = "picWeapon2";
-            this.picWeapon2.Size = new System.Drawing.Size(100, 100);
-            this.picWeapon2.TabIndex = 33;
-            this.picWeapon2.TabStop = false;
-            this.picWeapon2.Tag = "Weapon2";
-            // 
-            // picSub2
-            // 
-            this.picSub2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picSub2.Location = new System.Drawing.Point(136, 190);
-            this.picSub2.Name = "picSub2";
-            this.picSub2.Size = new System.Drawing.Size(100, 100);
-            this.picSub2.TabIndex = 32;
-            this.picSub2.TabStop = false;
-            this.picSub2.Tag = "Sub2";
-            // 
-            // picMain2
-            // 
-            this.picMain2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picMain2.Location = new System.Drawing.Point(136, 43);
-            this.picMain2.Name = "picMain2";
-            this.picMain2.Size = new System.Drawing.Size(100, 100);
-            this.picMain2.TabIndex = 31;
-            this.picMain2.TabStop = false;
-            this.picMain2.Tag = "Main2";
-            // 
-            // picChar2
-            // 
-            this.picChar2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picChar2.Location = new System.Drawing.Point(19, 43);
-            this.picChar2.Name = "picChar2";
-            this.picChar2.Size = new System.Drawing.Size(100, 100);
-            this.picChar2.TabIndex = 30;
-            this.picChar2.TabStop = false;
-            this.picChar2.Tag = "Char2";
-            // 
-            // picWeapon1
-            // 
-            this.picWeapon1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picWeapon1.Location = new System.Drawing.Point(19, 190);
-            this.picWeapon1.Name = "picWeapon1";
-            this.picWeapon1.Size = new System.Drawing.Size(100, 100);
-            this.picWeapon1.TabIndex = 33;
-            this.picWeapon1.TabStop = false;
-            this.picWeapon1.Tag = "Weapon1";
-            // 
-            // picSub1
-            // 
-            this.picSub1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picSub1.Location = new System.Drawing.Point(136, 190);
-            this.picSub1.Name = "picSub1";
-            this.picSub1.Size = new System.Drawing.Size(100, 100);
-            this.picSub1.TabIndex = 32;
-            this.picSub1.TabStop = false;
-            this.picSub1.Tag = "Sub1";
-            // 
-            // picMain1
-            // 
-            this.picMain1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picMain1.Location = new System.Drawing.Point(136, 43);
-            this.picMain1.Name = "picMain1";
-            this.picMain1.Size = new System.Drawing.Size(100, 100);
-            this.picMain1.TabIndex = 31;
-            this.picMain1.TabStop = false;
-            this.picMain1.Tag = "Main1";
-            // 
-            // picChar1
-            // 
-            this.picChar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picChar1.Location = new System.Drawing.Point(19, 43);
-            this.picChar1.Name = "picChar1";
-            this.picChar1.Size = new System.Drawing.Size(100, 100);
-            this.picChar1.TabIndex = 30;
-            this.picChar1.TabStop = false;
-            this.picChar1.Tag = "Char1";
-            // 
             // RollerUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,22 +663,22 @@
             this.menuStrip1.PerformLayout();
             this.box1.ResumeLayout(false);
             this.box1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picWeapon1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSub1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChar1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picWeapon2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSub2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChar2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSub3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWeapon2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSub2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picChar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWeapon1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSub1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picChar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -709,6 +736,9 @@
         private System.Windows.Forms.Label lblSub3;
         private System.Windows.Forms.Label lblWeapon3;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
     }
 }
 

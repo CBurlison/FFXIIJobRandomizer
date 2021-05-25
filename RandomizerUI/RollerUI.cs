@@ -1,4 +1,5 @@
 ﻿using RandomizerRoller.Controllers;
+using RandomizerRoller.Models;
 using RandomizerUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -6,14 +7,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace SixJobFiesta
 {
     public partial class RollerUI : Form
     {
+        private Roll _current = null;
+
         public RollerUI()
         {
             InitializeComponent();
@@ -23,6 +29,7 @@ namespace SixJobFiesta
             toolTip.SetToolTip(chkClassic, "Rolls Main jobs that existed in Final Fantasy 1. No Sub jobs can be used.");
             toolTip.SetToolTip(chkMainOnly, "Rolls only Main jobs.");
             toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
+            _current = new Roll();
         }
 
         void btnRoll_Click(object sender, EventArgs e)
@@ -31,35 +38,47 @@ namespace SixJobFiesta
             Roller roller = new Roller(chkUnique.Checked, chkWeapon.Checked, chkClassic.Checked, chkMainOnly.Checked, chkCharacters.Checked);
             roller.Roll();
 
+            _current = roller.Assignments;
+            PopulateUI();
+        }
+
+        private void PopulateUI()
+        {
+            chkUnique.Checked = _current.Unique;
+            chkWeapon.Checked = _current.Weapons;
+            chkClassic.Checked = _current.Classic;
+            chkMainOnly.Checked = _current.MainOnly;
+            chkCharacters.Checked = _current.RandomCharacters;
+
             var labels = GetControlsOfType<Label>();
             var pictures = GetControlsOfType<PictureBox>();
 
-            for (int i = 0; i < roller.Assignments.Count; i++)
+            for (int i = 0; i < _current.Characters.Count; i++)
             {
                 Label main = labels.First(a => a.Tag != null && a.Tag.ToString() == $"Main{i + 1}");
-                main.Text = roller.Assignments[i].Main.Name;
+                main.Text = _current.Characters[i].Main.Name;
                 Label sub = labels.First(a => a.Tag != null && a.Tag.ToString() == $"Sub{i + 1}");
-                sub.Text = roller.Assignments[i].Sub.Name;
+                sub.Text = _current.Characters[i].Sub.Name;
                 Label weapon = labels.First(a => a.Tag != null && a.Tag.ToString() == $"Weapon{i + 1}");
-                weapon.Text = roller.Assignments[i].Weapon;
+                weapon.Text = _current.Characters[i].Weapon;
                 Label character = labels.First(a => a.Tag != null && a.Tag.ToString() == $"Char{i + 1}");
-                character.Text = roller.Assignments[i].Name;
+                character.Text = _current.Characters[i].Name;
 
                 PictureBox imgCharacter = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Char{i + 1}");
-                if (roller.Assignments[i].Name != "Any")
-                    imgCharacter.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Name);
+                if (_current.Characters[i].Name != "Any")
+                    imgCharacter.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Name);
 
                 PictureBox imgMain = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Main{i + 1}");
-                if (roller.Assignments[i].Main.Name != "None")
-                    imgMain.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Main.Name);
+                if (_current.Characters[i].Main.Name != "None")
+                    imgMain.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Main.Name);
 
                 PictureBox imgSub = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Sub{i + 1}");
-                if (roller.Assignments[i].Sub.Name != "None")
-                    imgSub.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Sub.Name);
+                if (_current.Characters[i].Sub.Name != "None")
+                    imgSub.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Sub.Name);
 
                 PictureBox imgWeapon = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Weapon{i + 1}");
-                if (roller.Assignments[i].Weapon != "Any")
-                    imgWeapon.BackgroundImage = (Image)Resources.ResourceManager.GetObject(roller.Assignments[i].Weapon);
+                if (_current.Characters[i].Weapon != "Any")
+                    imgWeapon.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Weapon);
             }
         }
 
@@ -102,5 +121,58 @@ namespace SixJobFiesta
             Process.Start("https://finalfantasy.fandom.com/wiki/License_Board#List_of_jobs");
         }
         #endregion >>> Menu Strip Events
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_current.Characters.Count > 0)
+            {
+                SaveAs();
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Title = "Load roll.";
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "save files (*.save)|*.save";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var fileStream = openFileDialog.OpenFile();
+
+                    IFormatter formatter = new BinaryFormatter();
+                    _current = (Roll)formatter.Deserialize(fileStream);
+                    PopulateUI();
+                }
+            }
+        }
+
+        private void SaveAs()
+        {
+            Stream myStream;
+            using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+            {
+                saveFileDialog1.Title = "Save current roll.";
+                saveFileDialog1.Filter = "save files (*.save)|*.save";
+                saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    _current.SaveLoc = saveFileDialog1.FileName;
+
+                    if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    {
+                        IFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(myStream, _current);
+                        myStream.Close();
+                    }
+                }
+            }
+        }
     }
 }
