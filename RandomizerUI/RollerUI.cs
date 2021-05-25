@@ -4,6 +4,7 @@ using RandomizerUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -19,7 +20,6 @@ namespace RandomizerUI
     public partial class RollerUI : Form
     {
         private Roll _current = null;
-        private string _defaultSave;
 
         public RollerUI()
         {
@@ -32,11 +32,9 @@ namespace RandomizerUI
             toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
             _current = new Roll();
 
-            _defaultSave = Settings.Default.SaveLocation;
-
-            if (!Directory.Exists(_defaultSave))
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("SaveLocation")))
             {
-                Directory.CreateDirectory(_defaultSave);
+                UpdateConfigValue("SaveLocation", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
             }
         }
 
@@ -118,6 +116,22 @@ namespace RandomizerUI
                    select (T)Convert.ChangeType(component, typeof(T));
         }
 
+        private void SetSaveLocation(string file)
+        {
+            var split = file.Split('\\').ToList();
+            split.RemoveAt(split.Count - 1);
+            UpdateConfigValue("SaveLocation", string.Join("\\", split));
+        }
+
+        private void UpdateConfigValue(string setting, string value)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var key = config.AppSettings.Settings[setting];
+            config.AppSettings.Settings[setting].Value = value;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
         #region >>> Menu Strip Events
         private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -128,13 +142,33 @@ namespace RandomizerUI
         {
             Process.Start("https://finalfantasy.fandom.com/wiki/License_Board#List_of_jobs");
         }
-        #endregion >>> Menu Strip Events
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_current.Characters.Count > 0)
             {
-                SaveAs();
+                Stream myStream;
+                using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+                {
+                    saveFileDialog1.Title = "Save current roll.";
+                    saveFileDialog1.Filter = "save files (*.save)|*.save";
+                    saveFileDialog1.FilterIndex = 1;
+                    saveFileDialog1.InitialDirectory = ConfigurationManager.AppSettings.Get("SaveLocation");
+                    saveFileDialog1.RestoreDirectory = true;
+
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        SetSaveLocation(saveFileDialog1.FileName);
+                        _current.SaveLoc = saveFileDialog1.FileName;
+
+                        if ((myStream = saveFileDialog1.OpenFile()) != null)
+                        {
+                            IFormatter formatter = new BinaryFormatter();
+                            formatter.Serialize(myStream, _current);
+                            myStream.Close();
+                        }
+                    }
+                }
             }
         }
 
@@ -145,7 +179,7 @@ namespace RandomizerUI
                 openFileDialog.Title = "Load roll.";
                 openFileDialog.Filter = "save files (*.save)|*.save";
                 openFileDialog.FilterIndex = 1;
-                openFileDialog.InitialDirectory = _defaultSave;
+                openFileDialog.InitialDirectory = ConfigurationManager.AppSettings.Get("SaveLocation");
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -155,42 +189,12 @@ namespace RandomizerUI
 
                     IFormatter formatter = new BinaryFormatter();
                     _current = (Roll)formatter.Deserialize(fileStream);
+                    fileStream.Close();
                     PopulateUI();
                 }
             }
         }
 
-        private static void SetSaveLocation(string file)
-        {
-            var split = file.Split('/').ToList();
-            split.RemoveAt(split.Count - 1);
-            Settings.Default.SaveLocation = string.Join("//", split);
-        }
-
-        private void SaveAs()
-        {
-            Stream myStream;
-            using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
-            {
-                saveFileDialog1.Title = "Save current roll.";
-                saveFileDialog1.Filter = "save files (*.save)|*.save";
-                saveFileDialog1.FilterIndex = 1;
-                saveFileDialog1.InitialDirectory = _defaultSave;
-                saveFileDialog1.RestoreDirectory = true;
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    SetSaveLocation(saveFileDialog1.FileName);
-                    _current.SaveLoc = saveFileDialog1.FileName;
-
-                    if ((myStream = saveFileDialog1.OpenFile()) != null)
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(myStream, _current);
-                        myStream.Close();
-                    }
-                }
-            }
-        }
+        #endregion >>> Menu Strip Events
     }
 }

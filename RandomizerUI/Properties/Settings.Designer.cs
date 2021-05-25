@@ -23,15 +23,12 @@ namespace RandomizerUI.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%UserProfile%\\My Documents\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string SaveLocation {
             get {
                 return ((string)(this["SaveLocation"]));
-            }
-            set {
-                this["SaveLocation"] = value;
             }
         }
     }
