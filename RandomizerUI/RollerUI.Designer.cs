@@ -82,6 +82,9 @@
             this.lblSub3 = new System.Windows.Forms.Label();
             this.lblWeapon3 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.box1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon1)).BeginInit();
@@ -244,7 +247,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.weaponHelpToolStripMenuItem});
+            this.weaponHelpToolStripMenuItem,
+            this.themeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(931, 24);
@@ -263,14 +267,14 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -637,6 +641,29 @@
             this.label20.TabIndex = 7;
             this.label20.Text = "Weapon";
             // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lightToolStripMenuItem,
+            this.darkToolStripMenuItem});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // lightToolStripMenuItem
+            // 
+            this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lightToolStripMenuItem.Text = "Light";
+            this.lightToolStripMenuItem.Click += new System.EventHandler(this.lightToolStripMenuItem_Click);
+            // 
+            // darkToolStripMenuItem
+            // 
+            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkToolStripMenuItem.Text = "Dark";
+            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
+            // 
             // RollerUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -739,6 +766,9 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
     }
 }
 

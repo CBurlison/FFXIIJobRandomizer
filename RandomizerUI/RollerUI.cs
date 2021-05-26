@@ -1,5 +1,6 @@
 ﻿using RandomizerRoller.Controllers;
 using RandomizerRoller.Models;
+using RandomizerUI.Models;
 using RandomizerUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,13 @@ namespace RandomizerUI
             toolTip.SetToolTip(chkClassic, "Rolls Main jobs that existed in Final Fantasy 1. No Sub jobs can be used.");
             toolTip.SetToolTip(chkMainOnly, "Rolls only Main jobs.");
             toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
+
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("Theme")))
+            {
+                UpdateConfigValue("Theme", "Light");
+            }
+            SetTheme();
+
             _current = new Roll();
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("SaveLocation")))
@@ -127,9 +135,48 @@ namespace RandomizerUI
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var key = config.AppSettings.Settings[setting];
-            config.AppSettings.Settings[setting].Value = value;
+
+            if (key == null)
+                config.AppSettings.Settings.Add(setting, value);
+            else
+                config.AppSettings.Settings[setting].Value = value;
+
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        private void SetTheme()
+        {
+            string theme = ConfigurationManager.AppSettings.Get("Theme");
+
+            if (theme.ToLower().Equals("light"))
+                SetLightTheme();
+            else
+                SetDarkTheme();
+        }
+
+        private void SetDarkTheme()
+        {
+            SetControlAndChildrenColors(this, Theme.Dark);
+        }
+
+        private void SetLightTheme()
+        {
+            SetControlAndChildrenColors(this, Theme.Light);
+        }
+
+        private void SetControlAndChildrenColors(Control control, Theme theme)
+        {
+            control.BackColor = theme.Background;
+            control.ForeColor = theme.Text;
+            if (control.HasChildren)
+            {
+                // Recursively call this method for each child control.
+                foreach (Control childControl in control.Controls)
+                {
+                    SetControlAndChildrenColors(childControl, theme);
+                }
+            }
         }
 
         #region >>> Menu Strip Events
@@ -193,6 +240,18 @@ namespace RandomizerUI
                     PopulateUI();
                 }
             }
+        }
+
+        private void lightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateConfigValue("Theme", "Light");
+            SetTheme();
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateConfigValue("Theme", "Dark");
+            SetTheme();
         }
 
         #endregion >>> Menu Strip Events
