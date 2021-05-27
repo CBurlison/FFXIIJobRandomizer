@@ -38,6 +38,12 @@ namespace RandomizerUI
             }
             SetTheme();
 
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("Layout")))
+            {
+                UpdateConfigValue("Layout", "Horizontal");
+            }
+            SetLayout();
+
             _current = new Roll();
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("SaveLocation")))
@@ -179,7 +185,38 @@ namespace RandomizerUI
             }
         }
 
+        private void SetLayout()
+        {
+            string theme = ConfigurationManager.AppSettings.Get("Layout");
+
+            if (theme.ToLower().Equals("horizontal"))
+                SetHorizontal();
+            else
+                SetVertical();
+        }
+
+        private void SetHorizontal()
+        {
+            box1.Location = new Point(box1.Location.X, 30);
+            box2.Location = new Point(box1.Size.Width + box1.Location.X + 10, 30);
+            box3.Location = new Point(box1.Size.Width + box2.Location.X + 10, 30);
+
+            this.Size = new Size(box1.Size.Width + box3.Location.X + 25, box1.Size.Height + 75);
+            Refresh();
+        }
+
+        private void SetVertical()
+        {
+            box1.Location = new Point(box1.Location.X, 30);
+            box2.Location = new Point(box1.Location.X, box1.Location.Y + box1.Size.Height + 5);
+            box3.Location = new Point(box1.Location.X, box2.Location.Y + box1.Size.Height + 5);
+
+            this.Size = new Size(box1.Location.X + box1.Size.Width + 25, box3.Location.Y + box1.Size.Height + 50);
+            Refresh();
+        }
+
         #region >>> Menu Strip Events
+
         private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons");
@@ -252,6 +289,18 @@ namespace RandomizerUI
         {
             UpdateConfigValue("Theme", "Dark");
             SetTheme();
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateConfigValue("Layout", "Horizontal");
+            SetLayout();
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateConfigValue("Layout", "Vertical");
+            SetLayout();
         }
 
         #endregion >>> Menu Strip Events

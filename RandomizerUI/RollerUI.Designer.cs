@@ -51,12 +51,15 @@
             this.weaponHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.box1 = new System.Windows.Forms.GroupBox();
             this.picWeapon1 = new System.Windows.Forms.PictureBox();
             this.picSub1 = new System.Windows.Forms.PictureBox();
             this.picMain1 = new System.Windows.Forms.PictureBox();
             this.picChar1 = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.box2 = new System.Windows.Forms.GroupBox();
             this.picWeapon2 = new System.Windows.Forms.PictureBox();
             this.picSub2 = new System.Windows.Forms.PictureBox();
             this.picMain2 = new System.Windows.Forms.PictureBox();
@@ -69,7 +72,7 @@
             this.lblSub2 = new System.Windows.Forms.Label();
             this.lblWeapon2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.box3 = new System.Windows.Forms.GroupBox();
             this.picWeapon3 = new System.Windows.Forms.PictureBox();
             this.picSub3 = new System.Windows.Forms.PictureBox();
             this.picMain3 = new System.Windows.Forms.PictureBox();
@@ -82,21 +85,21 @@
             this.lblSub3 = new System.Windows.Forms.Label();
             this.lblWeapon3 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.layoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.box1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSub1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChar1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.box2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSub2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChar2)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.box3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSub3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain3)).BeginInit();
@@ -248,7 +251,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.weaponHelpToolStripMenuItem,
-            this.themeToolStripMenuItem});
+            this.themeToolStripMenuItem,
+            this.layoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(931, 24);
@@ -300,6 +304,29 @@
             this.jobsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.jobsToolStripMenuItem.Text = "Jobs";
             this.jobsToolStripMenuItem.Click += new System.EventHandler(this.jobsToolStripMenuItem_Click);
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lightToolStripMenuItem,
+            this.darkToolStripMenuItem});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // lightToolStripMenuItem
+            // 
+            this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.lightToolStripMenuItem.Text = "Light";
+            this.lightToolStripMenuItem.Click += new System.EventHandler(this.lightToolStripMenuItem_Click);
+            // 
+            // darkToolStripMenuItem
+            // 
+            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.darkToolStripMenuItem.Text = "Dark";
+            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
             // 
             // box1
             // 
@@ -361,25 +388,25 @@
             this.picChar1.TabStop = false;
             this.picChar1.Tag = "Char1";
             // 
-            // groupBox1
+            // box2
             // 
-            this.groupBox1.Controls.Add(this.picWeapon2);
-            this.groupBox1.Controls.Add(this.picSub2);
-            this.groupBox1.Controls.Add(this.picMain2);
-            this.groupBox1.Controls.Add(this.picChar2);
-            this.groupBox1.Controls.Add(this.lblChar2);
-            this.groupBox1.Controls.Add(this.lblMain2);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.lblSub2);
-            this.groupBox1.Controls.Add(this.lblWeapon2);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Location = new System.Drawing.Point(408, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(254, 304);
-            this.groupBox1.TabIndex = 37;
-            this.groupBox1.TabStop = false;
+            this.box2.Controls.Add(this.picWeapon2);
+            this.box2.Controls.Add(this.picSub2);
+            this.box2.Controls.Add(this.picMain2);
+            this.box2.Controls.Add(this.picChar2);
+            this.box2.Controls.Add(this.lblChar2);
+            this.box2.Controls.Add(this.lblMain2);
+            this.box2.Controls.Add(this.label6);
+            this.box2.Controls.Add(this.label7);
+            this.box2.Controls.Add(this.label8);
+            this.box2.Controls.Add(this.lblSub2);
+            this.box2.Controls.Add(this.lblWeapon2);
+            this.box2.Controls.Add(this.label12);
+            this.box2.Location = new System.Drawing.Point(408, 27);
+            this.box2.Name = "box2";
+            this.box2.Size = new System.Drawing.Size(254, 304);
+            this.box2.TabIndex = 37;
+            this.box2.TabStop = false;
             // 
             // picWeapon2
             // 
@@ -501,25 +528,25 @@
             this.label12.TabIndex = 7;
             this.label12.Text = "Weapon";
             // 
-            // groupBox2
+            // box3
             // 
-            this.groupBox2.Controls.Add(this.picWeapon3);
-            this.groupBox2.Controls.Add(this.picSub3);
-            this.groupBox2.Controls.Add(this.picMain3);
-            this.groupBox2.Controls.Add(this.picChar3);
-            this.groupBox2.Controls.Add(this.lblChar3);
-            this.groupBox2.Controls.Add(this.lblMain3);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.lblSub3);
-            this.groupBox2.Controls.Add(this.lblWeapon3);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Location = new System.Drawing.Point(668, 27);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(254, 304);
-            this.groupBox2.TabIndex = 38;
-            this.groupBox2.TabStop = false;
+            this.box3.Controls.Add(this.picWeapon3);
+            this.box3.Controls.Add(this.picSub3);
+            this.box3.Controls.Add(this.picMain3);
+            this.box3.Controls.Add(this.picChar3);
+            this.box3.Controls.Add(this.lblChar3);
+            this.box3.Controls.Add(this.lblMain3);
+            this.box3.Controls.Add(this.label15);
+            this.box3.Controls.Add(this.label16);
+            this.box3.Controls.Add(this.label17);
+            this.box3.Controls.Add(this.lblSub3);
+            this.box3.Controls.Add(this.lblWeapon3);
+            this.box3.Controls.Add(this.label20);
+            this.box3.Location = new System.Drawing.Point(668, 27);
+            this.box3.Name = "box3";
+            this.box3.Size = new System.Drawing.Size(254, 304);
+            this.box3.TabIndex = 38;
+            this.box3.TabStop = false;
             // 
             // picWeapon3
             // 
@@ -641,37 +668,36 @@
             this.label20.TabIndex = 7;
             this.label20.Text = "Weapon";
             // 
-            // themeToolStripMenuItem
+            // layoutToolStripMenuItem
             // 
-            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lightToolStripMenuItem,
-            this.darkToolStripMenuItem});
-            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.themeToolStripMenuItem.Text = "Theme";
+            this.layoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.horizontalToolStripMenuItem,
+            this.verticalToolStripMenuItem});
+            this.layoutToolStripMenuItem.Name = "layoutToolStripMenuItem";
+            this.layoutToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.layoutToolStripMenuItem.Text = "Layout";
             // 
-            // lightToolStripMenuItem
+            // horizontalToolStripMenuItem
             // 
-            this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            this.lightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.lightToolStripMenuItem.Text = "Light";
-            this.lightToolStripMenuItem.Click += new System.EventHandler(this.lightToolStripMenuItem_Click);
+            this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.horizontalToolStripMenuItem.Text = "Horizontal";
+            this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
             // 
-            // darkToolStripMenuItem
+            // verticalToolStripMenuItem
             // 
-            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.darkToolStripMenuItem.Text = "Dark";
-            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
+            this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verticalToolStripMenuItem.Text = "Vertical";
+            this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
             // RollerUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(931, 338);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.box3);
+            this.Controls.Add(this.box2);
             this.Controls.Add(this.box1);
             this.Controls.Add(this.chkCharacters);
             this.Controls.Add(this.chkMainOnly);
@@ -694,14 +720,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.picSub1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChar1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.box2.ResumeLayout(false);
+            this.box2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSub2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChar2)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.box3.ResumeLayout(false);
+            this.box3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSub3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMain3)).EndInit();
@@ -737,7 +763,7 @@
         private System.Windows.Forms.PictureBox picSub1;
         private System.Windows.Forms.PictureBox picMain1;
         private System.Windows.Forms.PictureBox picChar1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox box2;
         private System.Windows.Forms.PictureBox picWeapon2;
         private System.Windows.Forms.PictureBox picSub2;
         private System.Windows.Forms.PictureBox picMain2;
@@ -750,7 +776,7 @@
         private System.Windows.Forms.Label lblSub2;
         private System.Windows.Forms.Label lblWeapon2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox box3;
         private System.Windows.Forms.PictureBox picWeapon3;
         private System.Windows.Forms.PictureBox picSub3;
         private System.Windows.Forms.PictureBox picMain3;
@@ -769,6 +795,9 @@
         private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem layoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
     }
 }
 

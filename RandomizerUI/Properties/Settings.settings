@@ -8,5 +8,8 @@
     <Setting Name="Theme" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Light</Value>
     </Setting>
+    <Setting Name="Layout" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Horizontal</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
