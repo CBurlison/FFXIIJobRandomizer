@@ -50,6 +50,24 @@ namespace RandomizerUI
             {
                 UpdateConfigValue("SaveLocation", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
             }
+
+            BuildContextMenus();
+        }
+
+        private void BuildContextMenus()
+        {
+            var chars = Roller.BuildCharacterList();
+            var jobs = Roller.BuildJobList();
+            CharacterContextMenus(chars);
+        }
+
+        private void CharacterContextMenus(string[] chars)
+        {
+            MenuItem[] menuItems = chars.ToMenuItems();
+            
+            picChar1.ContextMenu = new ContextMenu(menuItems);
+            picChar2.ContextMenu = new ContextMenu(menuItems);
+            picChar3.ContextMenu = new ContextMenu(menuItems);
         }
 
         void btnRoll_Click(object sender, EventArgs e)
@@ -156,19 +174,9 @@ namespace RandomizerUI
             string theme = ConfigurationManager.AppSettings.Get("Theme");
 
             if (theme.ToLower().Equals("light"))
-                SetLightTheme();
+                SetControlAndChildrenColors(this, Theme.Light);
             else
-                SetDarkTheme();
-        }
-
-        private void SetDarkTheme()
-        {
-            SetControlAndChildrenColors(this, Theme.Dark);
-        }
-
-        private void SetLightTheme()
-        {
-            SetControlAndChildrenColors(this, Theme.Light);
+                SetControlAndChildrenColors(this, Theme.Dark);
         }
 
         private void SetControlAndChildrenColors(Control control, Theme theme)
@@ -304,5 +312,27 @@ namespace RandomizerUI
         }
 
         #endregion >>> Menu Strip Events
+    }
+
+    public static class ExtensionMethods
+    {
+        public static MenuItem[] ToMenuItems(this string[] list)
+        {
+            MenuItem[] ret = new MenuItem[list.Length];
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                MenuItem item = new MenuItem(list[i]);
+                item.Click += Item_Click;
+                ret[i] = item;
+            }
+
+            return ret;
+        }
+
+        private static void Item_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

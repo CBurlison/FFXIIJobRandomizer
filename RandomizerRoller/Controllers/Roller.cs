@@ -18,8 +18,13 @@ namespace RandomizerRoller.Controllers
         {
             Assignments = new Roll(unique, weapons, classic, mainOnly, randomCharacters);
 
-            _characterList = new[] { "Vaan", "Balthier", "Fran", "Basch", "Ashe", "Penelo" };
-            _jobs = new[] { 
+            _characterList = BuildCharacterList();
+            _jobs = BuildJobList();
+        }
+
+        public static Job[] BuildJobList()
+        {
+            return new[] {
                 new Job("Knight", new[] { "Swords", "Greatswords" }),
                 new Job("Monk", new[] { "Unarmed", "Poles" }),
                 new Job("White Mage", new[] { "Rods" }),
@@ -31,8 +36,13 @@ namespace RandomizerRoller.Controllers
                 new Job("Foebreaker", new[] { "Axes && Hammers", "Hand-bombs" }),
                 new Job("Time Battlemage", new[] { "Crossbows" }),
                 new Job("Machinist", new[] { "Guns", "Measures" }),
-                new Job("Archer", new[] { "Bows" }) 
+                new Job("Archer", new[] { "Bows" })
             };
+        }
+
+        public static string[] BuildCharacterList()
+        {
+            return new[] { "Vaan", "Balthier", "Fran", "Basch", "Ashe", "Penelo" };
         }
 
         public void Roll()
