@@ -71,3 +71,35 @@ RandomizerUI/bin/Debug/FFXII Job Randomizer.pdb
 RandomizerUI/bin/Debug/FFXII Job Randomizer.exe.config
 RandomizerUI/bin/Debug/FFXII Job Randomizer.exe
 RandomizerUI/obj/Debug/RandomizerUI.RollerUI.resources
+_build/RandomizerBot/RandomizerBot.exe
+_build/RandomizerBot/RandomizerBot.exe.config
+_build/RandomizerBot/RandomizerBot.pdb
+_build/RandomizerBot/RandomizerRoller.dll
+_build/RandomizerBot/RandomizerRoller.pdb
+_build/RandomizerRoller/RandomizerRoller.dll
+_build/RandomizerRoller/RandomizerRoller.pdb
+_build/RandomizerUI/FFXII Job Randomizer.exe
+_build/RandomizerUI/FFXII Job Randomizer.exe.Config
+_build/RandomizerUI/FFXII Job Randomizer.pdb
+_build/RandomizerUI/RandomizerRoller.dll
+_build/RandomizerUI/RandomizerRoller.pdb
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.g.targets
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.g.props
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.dgspec.json
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.cache
+RandomizerUI/obj/project.assets.json
+RandomizerUI/obj/Debug/RandomizerUI.csproj.SuggestedBindingRedirects.cache
+RandomizerUI/obj/Debug/RandomizerUI.csproj.CoreCompileInputs.cache
+RandomizerUI/obj/Debug/RandomizerUI.csproj.AssemblyReference.cache
+RandomizerUI/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+RandomizerRoller/obj/Debug/RandomizerRoller.csproj.CoreCompileInputs.cache
+RandomizerRoller/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+RandomizerBot/obj/Debug/RandomizerBot.csproj.SuggestedBindingRedirects.cache
+RandomizerBot/obj/Debug/RandomizerBot.csproj.CoreCompileInputs.cache
+RandomizerBot/obj/Debug/RandomizerBot.csproj.AssemblyReference.cache
+RandomizerBot/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.g.targets
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.g.props
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.dgspec.json
+RandomizerUI/obj/SixJobFiesta.csproj.nuget.cache
+RandomizerUI/obj/project.assets.json

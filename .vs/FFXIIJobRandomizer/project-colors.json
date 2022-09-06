@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5f27083b-d9fc-43fd-90d5-4b15a539c80d": {
+      "ProjectGuid": "5f27083b-d9fc-43fd-90d5-4b15a539c80d",
+      "DisplayName": "RandomizerUI",
+      "ColorIndex": 0
+    },
+    "08925c68-0e30-455f-991f-71edd191a3db": {
+      "ProjectGuid": "08925c68-0e30-455f-991f-71edd191a3db",
+      "DisplayName": "RandomizerRoller",
+      "ColorIndex": 1
+    },
+    "e120a44c-2318-4041-aa8d-4c644960239d": {
+      "ProjectGuid": "e120a44c-2318-4041-aa8d-4c644960239d",
+      "DisplayName": "RandomizerBot",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
