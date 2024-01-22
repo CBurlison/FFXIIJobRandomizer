@@ -3,6 +3,7 @@ using RandomizerRoller.Models;
 using RandomizerUI.Models;
 using RandomizerUI.Properties;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -12,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -33,23 +35,17 @@ namespace RandomizerUI
             toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("Theme")))
-            {
                 UpdateConfigValue("Theme", "Light");
-            }
             SetTheme();
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("Layout")))
-            {
                 UpdateConfigValue("Layout", "Horizontal");
-            }
             SetLayout();
 
             _current = new Roll();
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("SaveLocation")))
-            {
                 UpdateConfigValue("SaveLocation", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
-            }
 
             BuildContextMenus();
         }
@@ -59,24 +55,84 @@ namespace RandomizerUI
             var chars = Roller.BuildCharacterList();
             var jobs = Roller.BuildJobList();
             CharacterContextMenus(chars);
+            JobContextMenus(jobs);
         }
 
         private void CharacterContextMenus(string[] chars)
         {
-            MenuItem[] menuItems = chars.ToMenuItems();
-            
-            picChar1.ContextMenu = new ContextMenu(menuItems);
-            picChar2.ContextMenu = new ContextMenu(menuItems);
-            picChar3.ContextMenu = new ContextMenu(menuItems);
+            picChar1.ContextMenu = new ContextMenu(ToMenuItems(chars, 0, ImageType.Character));
+            picChar2.ContextMenu = new ContextMenu(ToMenuItems(chars, 1, ImageType.Character));
+            picChar3.ContextMenu = new ContextMenu(ToMenuItems(chars, 2, ImageType.Character));
+        }
+
+        private void JobContextMenus(Job[] jobs)
+        {
+            picMain1.ContextMenu = new ContextMenu(ToMenuItems(jobs, 0, ImageType.Main));
+            picMain1.BackgroundImageChanged += JobUpdate_BackgroundImageChanged;
+            picMain2.ContextMenu = new ContextMenu(ToMenuItems(jobs, 1, ImageType.Main));
+            picMain2.BackgroundImageChanged += JobUpdate_BackgroundImageChanged;
+            picMain3.ContextMenu = new ContextMenu(ToMenuItems(jobs, 2, ImageType.Main));
+            picMain3.BackgroundImageChanged += JobUpdate_BackgroundImageChanged;
+
+            picSub1.ContextMenu = new ContextMenu(ToMenuItems(jobs, 0, ImageType.Sub));
+            picSub1.BackgroundImageChanged += JobUpdate_BackgroundImageChanged;
+            picSub2.ContextMenu = new ContextMenu(ToMenuItems(jobs, 1, ImageType.Sub));
+            picSub2.BackgroundImageChanged += JobUpdate_BackgroundImageChanged;
+            picSub3.ContextMenu = new ContextMenu(ToMenuItems(jobs, 2, ImageType.Sub));
+            picSub3.BackgroundImageChanged += JobUpdate_BackgroundImageChanged;
+        }
+
+        private void JobUpdate_BackgroundImageChanged(object sender, EventArgs e)
+        {
+            var box = (PictureBox)sender;
+            int index = 0;
+            PictureBox picBox = null;
+            Label lbl = null;
+
+            if (((string)box.Tag).EndsWith("1"))
+            {
+                index = 0;
+                picBox = picWeapon1;
+                lbl = lblWeapon1;
+            }
+            else if (((string)box.Tag).EndsWith("2"))
+            {
+                index = 1;
+                picBox = picWeapon2;
+                lbl = lblWeapon2;
+            }
+            else if (((string)box.Tag).EndsWith("3"))
+            {
+                index = 2;
+                picBox = picWeapon3;
+                lbl = lblWeapon3;
+            }
+
+            var character = _current.Characters[index];
+            if ((character.Main == null || !character.Main.Weapons.Contains(character.Weapon))
+                && (character.Sub == null || !character.Sub.Weapons.Contains(character.Weapon)))
+            {
+                lbl.Text = string.Empty;
+                picBox.BackgroundImage = null;
+            }
+
+            List<string> weapons = new List<string>();
+
+            if (character.Main != null)
+                weapons.AddRange(character.Main.Weapons);
+            if (character.Sub != null)
+                weapons.AddRange(character.Sub.Weapons);
+
+            picBox.ContextMenu = new ContextMenu(ToMenuItems(weapons.ToArray(), index, ImageType.Weapon));
         }
 
         void btnRoll_Click(object sender, EventArgs e)
         {
             ClearAll();
             Roller roller = new Roller(chkUnique.Checked, chkWeapon.Checked, chkClassic.Checked, chkMainOnly.Checked, chkCharacters.Checked);
-            roller.Roll();
 
-            _current = roller.Assignments;
+            DateTime now = DateTime.Now;
+            _current = roller.Roll(now.Year + now.Month + now.Day + now.Hour + now.Minute + now.Second + now.Millisecond);
             PopulateUI();
         }
 
@@ -123,8 +179,8 @@ namespace RandomizerUI
         void ClearAll()
         {
             var labels = GetControlsOfType<Label>();
-            var toClear = labels.Where(a => a.Tag != null && 
-            (a.Tag.ToString().StartsWith("Main") || a.Tag.ToString().StartsWith("Sub") 
+            var toClear = labels.Where(a => a.Tag != null &&
+            (a.Tag.ToString().StartsWith("Main") || a.Tag.ToString().StartsWith("Sub")
             || a.Tag.ToString().StartsWith("Weapon") || a.Tag.ToString().StartsWith("Char")));
 
             foreach (Label lbl in toClear)
@@ -223,6 +279,221 @@ namespace RandomizerUI
             Refresh();
         }
 
+        public MenuItem[] ToMenuItems(string[] list, int index, ImageType type)
+        {
+            MenuItem[] ret = new MenuItem[list.Length + 1];
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                MenuItem item = new MenuItem(list[i]);
+                switch (type)
+                {
+                    case ImageType.Character: item.Click += Character_Click; break;
+                    case ImageType.Weapon: item.Click += Weapon_Click; break;
+                }
+                
+                ret[i] = item;
+                item.Tag = index;
+            }
+
+            MenuItem clear = new MenuItem("Clear");
+            switch (type)
+            {
+                case ImageType.Character: clear.Click += Character_Click; break;
+                case ImageType.Weapon: clear.Click += Weapon_Click; break;
+            }
+
+            ret[list.Length] = clear;
+            clear.Tag = index;
+
+            return ret;
+        }
+
+        public MenuItem[] ToMenuItems(Job[] jobs, int index, ImageType type)
+        {
+            MenuItem[] ret = new MenuItem[jobs.Length + 1];
+
+            for (int i = 0; i < jobs.Length; i++)
+            {
+                Job job = jobs[i];
+                MenuItem item = new MenuItem(job.Name);
+                switch (type)
+                {
+                    case ImageType.Main: item.Click += Main_Click; break;
+                    case ImageType.Sub: item.Click += Sub_Click; break;
+                }
+
+                ret[i] = item;
+                item.Tag = new Tuple<int, Job>(index, job);
+            }
+
+            MenuItem clear = new MenuItem("Clear");
+            switch (type)
+            {
+                case ImageType.Main: clear.Click += Main_Click; break;
+                case ImageType.Sub: clear.Click += Sub_Click; break;
+            }
+
+            ret[jobs.Length] = clear;
+            clear.Tag = new Tuple<int, Job>(index, Job.None);
+
+            return ret;
+        }
+
+        private void Character_Click(object sender, EventArgs e)
+        {
+            var mi = (MenuItem)sender;
+            var box = (int)mi.Tag;
+            string text = mi.Text;
+            _current.Characters[box].Name = text;
+
+            PictureBox pictureBox = null;
+            Label nameLbl = null;
+
+            switch (box)
+            {
+                case 0:
+                    pictureBox = picChar1;
+                    nameLbl = lblChar1;
+                    break;
+                case 1:
+                    pictureBox = picChar2;
+                    nameLbl = lblChar2;
+                    break;
+                case 2:
+                    pictureBox = picChar3;
+                    nameLbl = lblChar3;
+                    break;
+            }
+
+            if (text != "Clear")
+            {
+                pictureBox.BackgroundImage = (Image)Resources.ResourceManager.GetObject(text);
+                nameLbl.Text = text;
+            }
+            else
+            {
+                pictureBox.BackgroundImage = null;
+                nameLbl.Text = string.Empty;
+            }
+        }
+
+        private void Weapon_Click(object sender, EventArgs e)
+        {
+            var mi = (MenuItem)sender;
+            var box = (int)mi.Tag;
+            string text = mi.Text;
+
+            PictureBox pictureBox = null;
+            Label nameLbl = null;
+
+            switch (box)
+            {
+                case 0:
+                    pictureBox = picWeapon1;
+                    nameLbl = lblWeapon1;
+                    break;
+                case 1:
+                    pictureBox = picWeapon2;
+                    nameLbl = lblWeapon2;
+                    break;
+                case 2:
+                    pictureBox = picWeapon3;
+                    nameLbl = lblWeapon3;
+                    break;
+            }
+
+            if (text != "Clear")
+            {
+                pictureBox.BackgroundImage = (Image)Resources.ResourceManager.GetObject(text);
+                nameLbl.Text = text;
+                _current.Characters[box].Weapon = text;
+            }
+            else
+            {
+                pictureBox.BackgroundImage = null;
+                nameLbl.Text = string.Empty;
+                _current.Characters[box].Weapon = string.Empty;
+            }
+        }
+
+        private void Main_Click(object sender, EventArgs e)
+        {
+            var mi = (MenuItem)sender;
+            var box = (Tuple<int, Job>)mi.Tag;
+            string text = mi.Text;
+            _current.Characters[box.Item1].Main = box.Item2;
+
+            PictureBox pictureBox = null;
+            Label nameLbl = null;
+
+            switch (box.Item1)
+            {
+                case 0:
+                    pictureBox = picMain1;
+                    nameLbl = lblMain1;
+                    break;
+                case 1:
+                    pictureBox = picMain2;
+                    nameLbl = lblMain2;
+                    break;
+                case 2:
+                    pictureBox = picMain3;
+                    nameLbl = lblMain3;
+                    break;
+            }
+
+            if (text != "Clear")
+            {
+                pictureBox.BackgroundImage = (Image)Resources.ResourceManager.GetObject(text);
+                nameLbl.Text = text;
+            }
+            else
+            {
+                pictureBox.BackgroundImage = null;
+                nameLbl.Text = string.Empty;
+            }
+        }
+
+        private void Sub_Click(object sender, EventArgs e)
+        {
+            var mi = (MenuItem)sender;
+            var box = (Tuple<int, Job>)mi.Tag;
+            string text = mi.Text;
+
+            _current.Characters[box.Item1].Sub = box.Item2;
+
+            PictureBox pictureBox = null;
+            Label nameLbl = null;
+
+            switch (box.Item1)
+            {
+                case 0:
+                    pictureBox = picSub1;
+                    nameLbl = lblSub1;
+                    break;
+                case 1:
+                    pictureBox = picSub2;
+                    nameLbl = lblSub2;
+                    break;
+                case 2:
+                    pictureBox = picSub3;
+                    nameLbl = lblSub3;
+                    break;
+            }
+
+            if (text != "Clear")
+            {
+                pictureBox.BackgroundImage = (Image)Resources.ResourceManager.GetObject(text);
+                nameLbl.Text = text;
+            }
+            else
+            {
+                pictureBox.BackgroundImage = null;
+                nameLbl.Text = string.Empty;
+            }
+        }
+
         #region >>> Menu Strip Events
 
         private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -314,25 +585,11 @@ namespace RandomizerUI
         #endregion >>> Menu Strip Events
     }
 
-    public static class ExtensionMethods
+    public enum ImageType
     {
-        public static MenuItem[] ToMenuItems(this string[] list)
-        {
-            MenuItem[] ret = new MenuItem[list.Length];
-
-            for (int i = 0; i < list.Length; i++)
-            {
-                MenuItem item = new MenuItem(list[i]);
-                item.Click += Item_Click;
-                ret[i] = item;
-            }
-
-            return ret;
-        }
-
-        private static void Item_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        Character,
+        Main,
+        Sub,
+        Weapon
     }
 }

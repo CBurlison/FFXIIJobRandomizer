@@ -1,0 +1,6 @@
+F:\Projects\FFXIIJobRandomizer\RandomizerRoller\bin\Release\RandomizerRoller.dll
+F:\Projects\FFXIIJobRandomizer\RandomizerRoller\bin\Release\RandomizerRoller.pdb
+F:\Projects\FFXIIJobRandomizer\RandomizerRoller\obj\Release\RandomizerRoller.csproj.AssemblyReference.cache
+F:\Projects\FFXIIJobRandomizer\RandomizerRoller\obj\Release\RandomizerRoller.csproj.CoreCompileInputs.cache
+F:\Projects\FFXIIJobRandomizer\RandomizerRoller\obj\Release\RandomizerRoller.dll
+F:\Projects\FFXIIJobRandomizer\RandomizerRoller\obj\Release\RandomizerRoller.pdb

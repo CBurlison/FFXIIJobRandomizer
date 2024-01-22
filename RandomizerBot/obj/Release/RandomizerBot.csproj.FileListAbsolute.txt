@@ -1,0 +1,10 @@
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\bin\Release\RandomizerBot.exe.config
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\bin\Release\RandomizerBot.exe
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\bin\Release\RandomizerBot.pdb
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\bin\Release\RandomizerRoller.dll
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\bin\Release\RandomizerRoller.pdb
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\obj\Release\RandomizerBot.csproj.AssemblyReference.cache
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\obj\Release\RandomizerBot.csproj.CoreCompileInputs.cache
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\obj\Release\RandomizerBot.csproj.CopyComplete
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\obj\Release\RandomizerBot.exe
+F:\Projects\FFXIIJobRandomizer\RandomizerBot\obj\Release\RandomizerBot.pdb

@@ -1,0 +1,13 @@
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\bin\Release\FFXII Job Randomizer.exe.config
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\bin\Release\FFXII Job Randomizer.exe
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\bin\Release\FFXII Job Randomizer.pdb
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\bin\Release\RandomizerRoller.dll
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\bin\Release\RandomizerRoller.pdb
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\RandomizerUI.csproj.AssemblyReference.cache
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\RandomizerUI.RollerUI.resources
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\RandomizerUI.Properties.Resources.resources
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\RandomizerUI.csproj.GenerateResource.cache
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\RandomizerUI.csproj.CoreCompileInputs.cache
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\RandomizerUI.csproj.CopyComplete
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\FFXII Job Randomizer.exe
+F:\Projects\FFXIIJobRandomizer\RandomizerUI\obj\Release\FFXII Job Randomizer.pdb

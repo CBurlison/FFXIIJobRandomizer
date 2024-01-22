@@ -26,7 +26,7 @@ namespace RandomizerRoller.Models
             RandomCharacters = false;
 
             SaveLoc = string.Empty;
-            Characters = new List<Character>();
+            Characters = new List<Character>() { new Character(), new Character(), new Character() };
         }
 
         public Roll(bool unique, bool weapons,
@@ -40,7 +40,7 @@ namespace RandomizerRoller.Models
 
             SaveLoc = string.Empty;
 
-            Characters = new List<Character>();
+            Characters = new List<Character>() { new Character(), new Character(), new Character() };
         }
     }
 }

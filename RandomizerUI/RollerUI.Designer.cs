@@ -89,6 +89,7 @@
             this.lblSub3 = new System.Windows.Forms.Label();
             this.lblWeapon3 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.box1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWeapon1)).BeginInit();
@@ -692,6 +693,11 @@
             this.label20.TabIndex = 7;
             this.label20.Text = "Weapon";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // RollerUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -800,6 +806,7 @@
         private System.Windows.Forms.ToolStripMenuItem layoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

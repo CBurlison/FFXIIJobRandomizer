@@ -45,15 +45,16 @@ namespace RandomizerRoller.Controllers
             return new[] { "Vaan", "Balthier", "Fran", "Basch", "Ashe", "Penelo" };
         }
 
-        public void Roll()
+        public Roll Roll(int seed)
         {
             Assignments.Characters = new List<Character>();
-            DateTime now = DateTime.Now;
-            Random rand = new Random(now.Year + now.Month + now.Day + now.Hour + now.Minute + now.Second + now.Millisecond);
+            Random rand = new Random(seed);
 
             RollJobs(rand);
             RollWeapons(rand);
             RollCharacters(rand);
+
+            return Assignments;
         }
 
         private void RollCharacters(Random rand)

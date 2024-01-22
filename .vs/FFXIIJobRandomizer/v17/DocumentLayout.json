@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Projects\\FFXIIJobRandomizer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5F27083B-D9FC-43FD-90D5-4B15A539C80D}|RandomizerUI\\RandomizerUI.csproj|f:\\projects\\ffxiijobrandomizer\\randomizerui\\rollerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F27083B-D9FC-43FD-90D5-4B15A539C80D}|RandomizerUI\\RandomizerUI.csproj|solutionrelative:randomizerui\\rollerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08925C68-0E30-455F-991F-71EDD191A3DB}|RandomizerRoller\\RandomizerRoller.csproj|F:\\Projects\\FFXIIJobRandomizer\\randomizerroller\\controllers\\roller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08925C68-0E30-455F-991F-71EDD191A3DB}|RandomizerRoller\\RandomizerRoller.csproj|solutionrelative:randomizerroller\\controllers\\roller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08925C68-0E30-455F-991F-71EDD191A3DB}|RandomizerRoller\\RandomizerRoller.csproj|F:\\Projects\\FFXIIJobRandomizer\\randomizerroller\\models\\roll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08925C68-0E30-455F-991F-71EDD191A3DB}|RandomizerRoller\\RandomizerRoller.csproj|solutionrelative:randomizerroller\\models\\roll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F27083B-D9FC-43FD-90D5-4B15A539C80D}|RandomizerUI\\RandomizerUI.csproj|F:\\Projects\\FFXIIJobRandomizer\\randomizerui\\rollerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F27083B-D9FC-43FD-90D5-4B15A539C80D}|RandomizerUI\\RandomizerUI.csproj|solutionrelative:randomizerui\\rollerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Roll.cs",
+              "DocumentMoniker": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerRoller\\Models\\Roll.cs",
+              "RelativeDocumentMoniker": "RandomizerRoller\\Models\\Roll.cs",
+              "ToolTip": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerRoller\\Models\\Roll.cs",
+              "RelativeToolTip": "RandomizerRoller\\Models\\Roll.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T04:24:58.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RollerUI.cs [Design]",
+              "DocumentMoniker": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerUI\\RollerUI.cs",
+              "RelativeDocumentMoniker": "RandomizerUI\\RollerUI.cs",
+              "ToolTip": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerUI\\RollerUI.cs [Design]",
+              "RelativeToolTip": "RandomizerUI\\RollerUI.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T04:05:54.3Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Roller.cs",
+              "DocumentMoniker": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerRoller\\Controllers\\Roller.cs",
+              "RelativeDocumentMoniker": "RandomizerRoller\\Controllers\\Roller.cs",
+              "ToolTip": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerRoller\\Controllers\\Roller.cs",
+              "RelativeToolTip": "RandomizerRoller\\Controllers\\Roller.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAEwDEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-09T23:27:21.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RollerUI.cs",
+              "DocumentMoniker": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerUI\\RollerUI.cs",
+              "RelativeDocumentMoniker": "RandomizerUI\\RollerUI.cs",
+              "ToolTip": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerUI\\RollerUI.cs",
+              "RelativeToolTip": "RandomizerUI\\RollerUI.cs",
+              "ViewState": "AQIAAFYBAAAAAAAAAAAAwMkBAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-05-09T23:26:41.863Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
