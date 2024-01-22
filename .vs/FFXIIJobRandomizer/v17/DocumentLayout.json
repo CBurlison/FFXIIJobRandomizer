@@ -42,7 +42,8 @@
               "RelativeToolTip": "RandomizerRoller\\Models\\Roll.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAABiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-22T04:24:58.336Z"
+              "WhenOpened": "2024-01-22T04:24:58.336Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -66,7 +67,8 @@
               "RelativeToolTip": "RandomizerRoller\\Controllers\\Roller.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAAEwDEAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2022-05-09T23:27:21.516Z"
+              "WhenOpened": "2022-05-09T23:27:21.516Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -76,7 +78,7 @@
               "RelativeDocumentMoniker": "RandomizerUI\\RollerUI.cs",
               "ToolTip": "F:\\Projects\\FFXIIJobRandomizer\\RandomizerUI\\RollerUI.cs",
               "RelativeToolTip": "RandomizerUI\\RollerUI.cs",
-              "ViewState": "AQIAAFYBAAAAAAAAAAAAwMkBAAA6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2022-05-09T23:26:41.863Z",
               "EditorCaption": ""

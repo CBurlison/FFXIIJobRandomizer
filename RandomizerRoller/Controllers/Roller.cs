@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RandomizerRoller.Controllers
 {
@@ -10,8 +9,8 @@ namespace RandomizerRoller.Controllers
     {
         public Roll Assignments { get; set; }
 
-        private Job[] _jobs;
-        private string[] _characterList;
+        private readonly Job[] _jobs;
+        private readonly string[] _characterList;
 
         public Roller(bool unique, bool weapons,
             bool classic, bool mainOnly, bool randomCharacters)
@@ -67,7 +66,9 @@ namespace RandomizerRoller.Controllers
                 for (int i = 1; i < Assignments.Characters.Count; i++)
                 {
                     while (NameExists(newName))
+                    {
                         newName = _characterList[rand.Next(_characterList.Length)];
+                    }
 
                     Assignments.Characters[i].Name = newName;
                 }
@@ -78,7 +79,7 @@ namespace RandomizerRoller.Controllers
         {
             int max = Assignments.Classic ? 6 : 12;
 
-            for (var i = 0; i <= 2; i++)
+            for (int i = 0; i <= 2; i++)
             {
                 Job main = null;
 
@@ -88,8 +89,10 @@ namespace RandomizerRoller.Controllers
 
                     if ((Assignments.Unique && !CheckExists(rolled)) || !Assignments.Unique)
                     {
-                        Character ch = new Character();
-                        ch.Main = rolled;
+                        Character ch = new Character
+                        {
+                            Main = rolled
+                        };
                         Assignments.Characters.Add(ch);
                         main = rolled;
                     }
@@ -119,7 +122,7 @@ namespace RandomizerRoller.Controllers
 
         private bool CheckExists(Job rolled)
         {
-            var jobs = new List<Job>(Assignments.Characters.Select(a => a.Main));
+            List<Job> jobs = new List<Job>(Assignments.Characters.Select(a => a.Main));
 
             if (!Assignments.MainOnly && !Assignments.Classic)
             {
@@ -135,7 +138,7 @@ namespace RandomizerRoller.Controllers
             {
                 foreach (Character ch in Assignments.Characters)
                 {
-                    var weapons = new List<string>(ch.Main.Weapons);
+                    List<string> weapons = new List<string>(ch.Main.Weapons);
 
                     if (!Assignments.MainOnly && !Assignments.Classic)
                     {
@@ -149,9 +152,13 @@ namespace RandomizerRoller.Controllers
 
         private bool NameExists(string toCheck)
         {
-            foreach (var c in Assignments.Characters)
+            foreach (Character c in Assignments.Characters)
+            {
                 if (c.Name == toCheck)
+                {
                     return true;
+                }
+            }
 
             return false;
         }

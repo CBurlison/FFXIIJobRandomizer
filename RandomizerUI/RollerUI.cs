@@ -3,7 +3,6 @@ using RandomizerRoller.Models;
 using RandomizerUI.Models;
 using RandomizerUI.Properties;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -13,7 +12,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -35,25 +33,33 @@ namespace RandomizerUI
             toolTip.SetToolTip(chkCharacters, "Rolls character assignments.");
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("Theme")))
+            {
                 UpdateConfigValue("Theme", "Light");
+            }
+
             SetTheme();
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("Layout")))
+            {
                 UpdateConfigValue("Layout", "Horizontal");
+            }
+
             SetLayout();
 
             _current = new Roll();
 
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("SaveLocation")))
+            {
                 UpdateConfigValue("SaveLocation", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            }
 
             BuildContextMenus();
         }
 
         private void BuildContextMenus()
         {
-            var chars = Roller.BuildCharacterList();
-            var jobs = Roller.BuildJobList();
+            string[] chars = Roller.BuildCharacterList();
+            Job[] jobs = Roller.BuildJobList();
             CharacterContextMenus(chars);
             JobContextMenus(jobs);
         }
@@ -84,7 +90,7 @@ namespace RandomizerUI
 
         private void JobUpdate_BackgroundImageChanged(object sender, EventArgs e)
         {
-            var box = (PictureBox)sender;
+            PictureBox box = (PictureBox)sender;
             int index = 0;
             PictureBox picBox = null;
             Label lbl = null;
@@ -108,7 +114,7 @@ namespace RandomizerUI
                 lbl = lblWeapon3;
             }
 
-            var character = _current.Characters[index];
+            Character character = _current.Characters[index];
             if ((character.Main == null || !character.Main.Weapons.Contains(character.Weapon))
                 && (character.Sub == null || !character.Sub.Weapons.Contains(character.Weapon)))
             {
@@ -119,14 +125,19 @@ namespace RandomizerUI
             List<string> weapons = new List<string>();
 
             if (character.Main != null)
+            {
                 weapons.AddRange(character.Main.Weapons);
+            }
+
             if (character.Sub != null)
+            {
                 weapons.AddRange(character.Sub.Weapons);
+            }
 
             picBox.ContextMenu = new ContextMenu(ToMenuItems(weapons.ToArray(), index, ImageType.Weapon));
         }
 
-        void btnRoll_Click(object sender, EventArgs e)
+        private void btnRoll_Click(object sender, EventArgs e)
         {
             ClearAll();
             Roller roller = new Roller(chkUnique.Checked, chkWeapon.Checked, chkClassic.Checked, chkMainOnly.Checked, chkCharacters.Checked);
@@ -144,8 +155,8 @@ namespace RandomizerUI
             chkMainOnly.Checked = _current.MainOnly;
             chkCharacters.Checked = _current.RandomCharacters;
 
-            var labels = GetControlsOfType<Label>();
-            var pictures = GetControlsOfType<PictureBox>();
+            IEnumerable<Label> labels = GetControlsOfType<Label>();
+            IEnumerable<PictureBox> pictures = GetControlsOfType<PictureBox>();
 
             for (int i = 0; i < _current.Characters.Count; i++)
             {
@@ -160,39 +171,51 @@ namespace RandomizerUI
 
                 PictureBox imgCharacter = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Char{i + 1}");
                 if (_current.Characters[i].Name != "Any")
+                {
                     imgCharacter.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Name);
+                }
 
                 PictureBox imgMain = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Main{i + 1}");
                 if (_current.Characters[i].Main.Name != "None")
+                {
                     imgMain.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Main.Name);
+                }
 
                 PictureBox imgSub = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Sub{i + 1}");
                 if (_current.Characters[i].Sub.Name != "None")
+                {
                     imgSub.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Sub.Name);
+                }
 
                 PictureBox imgWeapon = pictures.First(a => a.Tag != null && a.Tag.ToString() == $"Weapon{i + 1}");
                 if (_current.Characters[i].Weapon != "Any")
+                {
                     imgWeapon.BackgroundImage = (Image)Resources.ResourceManager.GetObject(_current.Characters[i].Weapon);
+                }
             }
         }
 
-        void ClearAll()
+        private void ClearAll()
         {
-            var labels = GetControlsOfType<Label>();
-            var toClear = labels.Where(a => a.Tag != null &&
+            IEnumerable<Label> labels = GetControlsOfType<Label>();
+            IEnumerable<Label> toClear = labels.Where(a => a.Tag != null &&
             (a.Tag.ToString().StartsWith("Main") || a.Tag.ToString().StartsWith("Sub")
             || a.Tag.ToString().StartsWith("Weapon") || a.Tag.ToString().StartsWith("Char")));
 
             foreach (Label lbl in toClear)
+            {
                 lbl.Text = string.Empty;
+            }
 
-            var images = GetControlsOfType<PictureBox>();
-            var imagesToClear = images.Where(a => a.Tag != null &&
+            IEnumerable<PictureBox> images = GetControlsOfType<PictureBox>();
+            IEnumerable<PictureBox> imagesToClear = images.Where(a => a.Tag != null &&
             (a.Tag.ToString().StartsWith("Main") || a.Tag.ToString().StartsWith("Sub")
             || a.Tag.ToString().StartsWith("Weapon") || a.Tag.ToString().StartsWith("Char")));
 
             foreach (PictureBox img in imagesToClear)
+            {
                 img.BackgroundImage = null;
+            }
         }
 
         private IEnumerable<T> GetControlsOfType<T>()
@@ -206,7 +229,7 @@ namespace RandomizerUI
 
         private void SetSaveLocation(string file)
         {
-            var split = file.Split('\\').ToList();
+            List<string> split = file.Split('\\').ToList();
             split.RemoveAt(split.Count - 1);
             UpdateConfigValue("SaveLocation", string.Join("\\", split));
         }
@@ -214,12 +237,16 @@ namespace RandomizerUI
         private void UpdateConfigValue(string setting, string value)
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var key = config.AppSettings.Settings[setting];
+            KeyValueConfigurationElement key = config.AppSettings.Settings[setting];
 
             if (key == null)
+            {
                 config.AppSettings.Settings.Add(setting, value);
+            }
             else
+            {
                 config.AppSettings.Settings[setting].Value = value;
+            }
 
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
@@ -230,9 +257,13 @@ namespace RandomizerUI
             string theme = ConfigurationManager.AppSettings.Get("Theme");
 
             if (theme.ToLower().Equals("light"))
+            {
                 SetControlAndChildrenColors(this, Theme.Light);
+            }
             else
+            {
                 SetControlAndChildrenColors(this, Theme.Dark);
+            }
         }
 
         private void SetControlAndChildrenColors(Control control, Theme theme)
@@ -254,9 +285,13 @@ namespace RandomizerUI
             string theme = ConfigurationManager.AppSettings.Get("Layout");
 
             if (theme.ToLower().Equals("horizontal"))
+            {
                 SetHorizontal();
+            }
             else
+            {
                 SetVertical();
+            }
         }
 
         private void SetHorizontal()
@@ -265,7 +300,7 @@ namespace RandomizerUI
             box2.Location = new Point(box1.Size.Width + box1.Location.X + 10, 30);
             box3.Location = new Point(box1.Size.Width + box2.Location.X + 10, 30);
 
-            this.Size = new Size(box1.Size.Width + box3.Location.X + 25, box1.Size.Height + 75);
+            Size = new Size(box1.Size.Width + box3.Location.X + 25, box1.Size.Height + 75);
             Refresh();
         }
 
@@ -275,7 +310,7 @@ namespace RandomizerUI
             box2.Location = new Point(box1.Location.X, box1.Location.Y + box1.Size.Height + 5);
             box3.Location = new Point(box1.Location.X, box2.Location.Y + box1.Size.Height + 5);
 
-            this.Size = new Size(box1.Location.X + box1.Size.Width + 25, box3.Location.Y + box1.Size.Height + 50);
+            Size = new Size(box1.Location.X + box1.Size.Width + 25, box3.Location.Y + box1.Size.Height + 50);
             Refresh();
         }
 
@@ -291,7 +326,7 @@ namespace RandomizerUI
                     case ImageType.Character: item.Click += Character_Click; break;
                     case ImageType.Weapon: item.Click += Weapon_Click; break;
                 }
-                
+
                 ret[i] = item;
                 item.Tag = index;
             }
@@ -342,8 +377,8 @@ namespace RandomizerUI
 
         private void Character_Click(object sender, EventArgs e)
         {
-            var mi = (MenuItem)sender;
-            var box = (int)mi.Tag;
+            MenuItem mi = (MenuItem)sender;
+            int box = (int)mi.Tag;
             string text = mi.Text;
             _current.Characters[box].Name = text;
 
@@ -380,8 +415,8 @@ namespace RandomizerUI
 
         private void Weapon_Click(object sender, EventArgs e)
         {
-            var mi = (MenuItem)sender;
-            var box = (int)mi.Tag;
+            MenuItem mi = (MenuItem)sender;
+            int box = (int)mi.Tag;
             string text = mi.Text;
 
             PictureBox pictureBox = null;
@@ -419,8 +454,8 @@ namespace RandomizerUI
 
         private void Main_Click(object sender, EventArgs e)
         {
-            var mi = (MenuItem)sender;
-            var box = (Tuple<int, Job>)mi.Tag;
+            MenuItem mi = (MenuItem)sender;
+            Tuple<int, Job> box = (Tuple<int, Job>)mi.Tag;
             string text = mi.Text;
             _current.Characters[box.Item1].Main = box.Item2;
 
@@ -457,8 +492,8 @@ namespace RandomizerUI
 
         private void Sub_Click(object sender, EventArgs e)
         {
-            var mi = (MenuItem)sender;
-            var box = (Tuple<int, Job>)mi.Tag;
+            MenuItem mi = (MenuItem)sender;
+            Tuple<int, Job> box = (Tuple<int, Job>)mi.Tag;
             string text = mi.Text;
 
             _current.Characters[box.Item1].Sub = box.Item2;
@@ -498,12 +533,12 @@ namespace RandomizerUI
 
         private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons");
+            _ = Process.Start("https://finalfantasy.fandom.com/wiki/Final_Fantasy_XII_weapons");
         }
 
         private void jobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://finalfantasy.fandom.com/wiki/License_Board#List_of_jobs");
+            _ = Process.Start("https://finalfantasy.fandom.com/wiki/License_Board#List_of_jobs");
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -548,7 +583,7 @@ namespace RandomizerUI
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     SetSaveLocation(openFileDialog.FileName);
-                    var fileStream = openFileDialog.OpenFile();
+                    Stream fileStream = openFileDialog.OpenFile();
 
                     IFormatter formatter = new BinaryFormatter();
                     _current = (Roll)formatter.Deserialize(fileStream);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace RandomizerUI.Models
 {
@@ -16,9 +11,11 @@ namespace RandomizerUI.Models
         {
             get
             {
-                Theme theme = new Theme();
-                theme.Background = SystemColors.ControlLightLight;
-                theme.Text = SystemColors.ControlText;
+                Theme theme = new Theme
+                {
+                    Background = SystemColors.ControlLightLight,
+                    Text = SystemColors.ControlText
+                };
 
                 return theme;
             }
@@ -28,9 +25,11 @@ namespace RandomizerUI.Models
         {
             get
             {
-                Theme theme = new Theme();
-                theme.Background = SystemColors.ControlText;
-                theme.Text = SystemColors.ControlLightLight;
+                Theme theme = new Theme
+                {
+                    Background = SystemColors.ControlText,
+                    Text = SystemColors.ControlLightLight
+                };
 
                 return theme;
             }

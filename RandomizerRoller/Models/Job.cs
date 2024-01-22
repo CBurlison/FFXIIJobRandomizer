@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
 namespace RandomizerRoller.Models
 {
@@ -20,15 +18,12 @@ namespace RandomizerRoller.Models
 
         public bool Equals(Job other)
         {
-            return other == null ? false : Name == other.Name;
+            return other != null && Name == other.Name;
         }
 
         public bool Equals(Job x, Job y)
         {
-            if (x != null && y != null)
-                return Name == x.Name && Name == y.Name;
-
-            return false;
+            return x != null && y != null && Name == x.Name && Name == y.Name;
         }
 
         public int GetHashCode(Job obj)
